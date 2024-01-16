@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Song | Party Play for Spotify</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+  </head>
+  <body>
+    <h1>
+      AT A PARTY?<br />
+      ADD A SONG
+    </h1>
+    <input id="search" type="text" />
+    <div id="playlist">
+      <div class="card">
+        <img src="" />
+        <span class="title">Song Title</span>
+        <span class="artist">Artist</span>
+      </div>
+    </div>
+  </body>
+  <script type="module">
+    import { createAttr } from '../js/attribution';
+    import { createTermsPopup } from '../js/terms-popup';
+
+    createAttr(document.body);
+    createTermsPopup(document.body);
+  </script>
+</html>

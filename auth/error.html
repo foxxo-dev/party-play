@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oops, there's a problem.</title>
+  </head>
+  <body>
+    <h1>We have encountered a problem with the spotify data.</h1>
+    <h2>
+      This is not common, we recomend you go
+      <a href="/become-host/index.html">back to the auth page again.</a>
+    </h2>
+    <p id="error_container"></p>
+  </body>
+  <script type="module">
+    import { parseURLParams } from '../js/params-parser.js';
+
+    console.log(parseURLParams(window.location.href));
+    const { error, state } = parseURLParams(window.location.href);
+
+    document.getElementById(
+      'error_container'
+    ).innerText = `Error: ${error}! Code: ${state}`;
+  </script>
+</html>

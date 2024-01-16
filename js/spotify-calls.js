@@ -39,3 +39,23 @@ export async function createPublicPlaylist(accessToken) {
 
   return playlist;
 }
+
+export async function search(query, token) {
+  const response = await fetchWebApi(
+    `search?q=${query}&type=track`,
+    token,
+    'GET'
+  );
+  console.log(response);
+  return response;
+}
+
+export async function getPlaylistTracks(playlistId, token) {
+  const response = await fetchWebApi(
+    `playlists/${playlistId}/tracks`,
+    token,
+    'GET'
+  );
+  console.log(response);
+  return response;
+}

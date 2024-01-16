@@ -1,7 +1,11 @@
 **This is a work in progress app.**
 # Welcome to Party Play! - foxxo.studio
 ## Use the spotify design and legal guidelines, and help develop the app!
-*v0.1.0*
+*v0.1.1*
+
+## Pre-release 0.1.1
+ - Fixed a bug with express.js (removed it)
+ - Added search functionality into backend
 
 ## Pre-Release 0.1.0
  - Created an Oath Page, and got user token + id

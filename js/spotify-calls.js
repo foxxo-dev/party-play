@@ -22,7 +22,7 @@ async function fetchWebApi(endpoint, token, method, body) {
   console.log(data);
 
   if (data.error) {
-    // window.location.href = '../auth/error.html?error=token-expired&state=401';
+    window.location.href = '../auth/error.html?error=token-expired&state=401';
     throw new Error(data.error.message);
   }
 

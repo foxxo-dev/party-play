@@ -8,7 +8,7 @@
     "build": "vite build && npm run copy-folders",
     "preview": "vite preview",
     "start": "vite",
-    "copy-folders": "cp -R js become-host auth assets addSong dist"
+    "copy-folders": "cp -R js become-host auth assets addSong dist styles"
   },
   "devDependencies": {
     "vite": "^5.0.8"

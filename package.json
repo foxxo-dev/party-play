@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5173",
-    "build": "vite build && cp -R js become-host auth assets addSong dist",
+    "build": "vite build && npm run copy-folders",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite",
+    "copy-folders": "cp -R js become-host auth assets addSong dist"
   },
   "devDependencies": {
     "vite": "^5.0.8"

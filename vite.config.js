@@ -13,12 +13,12 @@ export default defineConfig({
       plugins: [
         copy({
           targets: [
-            { src: 'js/*', dest: 'dist' },
-            { src: 'become-host/*', dest: 'dist' },
-            { src: 'auth/*', dest: 'dist' },
-            { src: 'assets/*', dest: 'dist' },
-            { src: 'addSong/*', dest: 'dist' },
-            { src: 'terms-and-conditions/*', dest: 'dist' }
+            { src: 'js/', dest: 'dist' },
+            { src: 'become-host/', dest: 'dist' },
+            { src: 'auth/', dest: 'dist' },
+            { src: 'assets/', dest: 'dist' },
+            { src: 'addSong/', dest: 'dist' },
+            { src: 'terms-and-conditions/', dest: 'dist' }
           ],
           hook: 'writeBundle' // Copy after bundling
         })

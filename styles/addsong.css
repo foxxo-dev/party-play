@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+#search {
+  all: unset;
+  background: var(--primary);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 25rem;
+}
+
+#search::placeholder {
+  color: var(--secondary);
+}
+
+/* Playlist */
+#playlist {
+  width: 100%;
+  max-width: 25rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+/* Make the first card of the playlist background primary */
+#playlist > .card:first-child {
+  background: var(--primary);
+}
+.card {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  padding-inline: 1rem;
+  position: relative;
+}
+.card > div {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  text-align: right;
+}
+.card > div > .artist {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.card > img {
+  width: 4rem;
+  height: 4rem;
+}
+.spotify-attribution {
+  position: absolute;
+  font-size: 0.5rem;
+  bottom: 0.25rem;
+  right: 0.25rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.spotify-attribution::after {
+  display: none;
+}
+
+/* Search Overlay */
+#search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg, black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+
+  padding: auto;
+}
+
+#results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 25rem;
+  margin-top: 5rem;
+  height: min-content;
+}
+
+.result-card {
+  height: 4rem;
+  width: 100%;
+}
+
+.result-card > img {
+  width: 3rem;
+  height: 3rem;
+}

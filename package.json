@@ -1,11 +1,11 @@
 {
   "name": "party-play",
   "private": true,
-  "version": "0.1.2",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port 5173",
-    "build": "vite build",
+    "build": "vite build && cp -R js become-host auth assets addSong dist",
     "preview": "vite preview",
     "start": "vite"
   },

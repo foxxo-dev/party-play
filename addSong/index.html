@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Song | Party Play for Spotify</title>
     <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/addsong.css" />
   </head>
   <body>
     <h1>
       AT A PARTY?<br />
       ADD A SONG
     </h1>
-    <input id="search" type="text" />
-    <div id="playlist">
-      <div class="card">
-        <img src="" />
-        <span class="title">Song Title</span>
-        <span class="artist">Artist</span>
-      </div>
+    <input
+      id="search"
+      type="text"
+      name="song-search"
+      autocomplete="none"
+      placeholder="Search..."
+    />
+    <div id="search-overlay" style="display: none">
+      <div id="results"></div>
     </div>
+    <div id="playlist"></div>
   </body>
   <script type="module" src="./main.js"></script>
 </html>

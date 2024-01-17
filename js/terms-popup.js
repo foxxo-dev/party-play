@@ -1,3 +1,4 @@
+import '../styles/variables.css';
 import '../styles/popup.css';
 
 export function createTermsPopup(div_container) {

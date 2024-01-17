@@ -18,7 +18,6 @@
       addRecommendedTracks
     } from '../js/spotify-calls';
     import { parseURLParams } from '../js/params-parser.js';
-    import QRCode from 'qrcode';
 
     const response = parseURLParams(window.location.href);
     var Uid = '';
@@ -33,14 +32,14 @@
 
       document.body.innerHTML = `<h1>Playlist Created!</h1> <h2>Share this URL with anyone, to add songs to the playlist!</h2> <a href="https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}">https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}</a> <canvas id="qrcode"></canvas>`;
 
-      QRCode.toCanvas(
-        document.getElementById('qrcode'),
-        `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
-        function (error) {
-          if (error) console.error(error);
-          console.log('success!');
-        }
-      );
+      // QRCode.toCanvas(
+      //   document.getElementById('qrcode'),
+      //   `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
+      //   function (error) {
+      //     if (error) console.error(error);
+      //     console.log('success!');
+      //   }
+      // );
 
       createAttr(document.body);
     } else {

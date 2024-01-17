@@ -15,6 +15,16 @@
     console.log(parseURLParams(window.location.href));
     const { code, token } = parseURLParams(window.location.href);
 
-      window.location.href = '/become-host/index.html?returnUserCode=' + code[0] + '&token=' + token[0];
+    
+    setInterval(makeAlert, 1000);
+    
+    let time = 5;
+    
+    function makeAlert() {
+      if (time == 0) 
+          window.location.href = '/become-host/index.html?returnUserCode=' + code[0] + '&token=' + token[0];
+        document.querySelector('h2').innerText = 'Please stand by while we get you to the correct page. ' + time;
+        time--;
+      }
   </script>
 </html>

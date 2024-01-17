@@ -7,7 +7,7 @@
 
 _Current Release: v0.1.2_
 
-**NOTE THE SHEARABLE URL CONTAINS VALIABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
+**NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
 
 ## Pre-release 0.1.2
 
@@ -24,7 +24,7 @@ _Current Release: v0.1.2_
 ## Pre-Release 0.1.0
 
 - Created an Oath Page, and got user token + id
-- Made link shareable (**NOTE THIS URL CONTAINS VALIABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_)
+- Made link shareable (**NOTE THIS URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_)
 - Added terms and conditions popup, including cookies
 - Auto-created playlist when initializing one
 - Added QR code for easier shareability

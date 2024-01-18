@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You've made it!</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <style>
+      .gradient-txt {
+  background: linear-gradient(90deg, var(--primary, blue), var(--accent, blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1><span class="gradient-txt">Sucess,</span> we are getting you to the dashboard!</h1>
+    <h2>Please stand by while we get you to the correct page. <h2>
+  </body>
+  <script type="module">
+    import { parseURLParams } from '../js/params-parser.js';
+
+    console.log(parseURLParams(window.location.href));
+    const { code, token } = parseURLParams(window.location.href);
+
+    
+    setInterval(makeAlert, 1000);
+    
+    let time = 5;
+    
+    function makeAlert() {
+      if (time == 0) 
+          window.location.href = '../become-host/index.html?returnUserCode=' + code[0] + '&token=' + token[0];
+        document.querySelector('h2').innerText = 'Please stand by while we get you to the correct page. ' + time;
+        time--;
+      }
+  </script>
+</html>

@@ -30,21 +30,21 @@
       addRecommendedTracks(token, playlist.id);
       // const playlist = { id: 'test-234' };
 
-      document.body.innerHTML = `<h1>Playlist Created!</h1> <h2>Share this URL with anyone, to add songs to the playlist!</h2> <a href="https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}">https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}</a> <canvas id="qrcode"></canvas>`;
+      document.body.innerHTML = `<h1>Playlist Created!</h1> <h2>Share this URL with anyone, to add songs to the playlist!</h2> <a href="http://localhost:5173/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}">http://localhost:5173/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}</a> <canvas id="qrcode"></canvas>`;
 
-      // QRCode.toCanvas(
-      //   document.getElementById('qrcode'),
-      //   `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
-      //   function (error) {
-      //     if (error) console.error(error);
-      //     console.log('success!');
-      //   }
-      // );
+      QRCode.toCanvas(
+        document.getElementById('qrcode'),
+        `http://localhost:5173/src/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
+        function (error) {
+          if (error) console.error(error);
+          console.log('success!');
+        }
+      );
 
       createAttr(document.body);
     } else {
       const scopes = ['playlist-modify-public', 'user-top-read'];
-      window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=http://localhost:5173/auth/process.html&scope=${scopes.join(
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=http://localhost:5173/src/auth/process.html&scope=${scopes.join(
         '%20'
       )}&state=123`;
     }

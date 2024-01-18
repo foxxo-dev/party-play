@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become Host</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/addsong.css" />
+  </head>
+  <body>
+    <p>We are creating your playlist now...</p>
+  </body>
+
+  <script type="module">
+    import { createAttr } from '../js/attribution';
+    import {
+      createPublicPlaylist,
+      addRecommendedTracks
+    } from '../js/spotify-calls';
+    import { parseURLParams } from '../js/params-parser.js';
+
+    const response = parseURLParams(window.location.href);
+    var Uid = '';
+    var token = '';
+
+    if (response) {
+      Uid = response.returnUserCode[0];
+      token = response.token[0];
+      const playlist = await createPublicPlaylist(token);
+      addRecommendedTracks(token, playlist.id);
+      // const playlist = { id: 'test-234' };
+
+      document.body.innerHTML = `<h1>Playlist Created!</h1> <h2>Share this URL with anyone, to add songs to the playlist!</h2> <a href="http://localhost:5173/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}">http://localhost:5173/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}</a> <canvas id="qrcode"></canvas>`;
+
+      QRCode.toCanvas(
+        document.getElementById('qrcode'),
+        `http://localhost:5173/auth/process.html/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
+        function (error) {
+          if (error) console.error(error);
+          console.log('success!');
+        }
+      );
+
+      createAttr(document.body);
+    } else {
+      const scopes = ['playlist-modify-public', 'user-top-read'];
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=http://localhost:5173/auth/process.html&scope=${scopes.join(
+        '%20'
+      )}&state=123`;
+    }
+    console.log(Uid);
+  </script>
+</html>

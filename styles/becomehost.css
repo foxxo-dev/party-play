@@ -1,0 +1,129 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.main {
+  width: clamp(20rem, 100%, 40rem);
+  gap: 1rem;
+}
+
+.url-container {
+  display: flex;
+  flex: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  height: 2rem;
+  width: min-content;
+
+  color: var(--text, #fff);
+  background-color: var(--background, #091018);
+  outline: 0.125rem solid var(--primary, #4b6fdd);
+  filter: drop-shadow(0 0 0.5rem var(--primary));
+
+  border-radius: 1rem;
+  padding: 0.0625rem;
+}
+
+.url-container > a {
+  color: var(--accent, #4b6fdd);
+}
+
+.url-container > button {
+  width: 2rem;
+  height: 2rem;
+
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  border-radius: 100%;
+  background: var(--primary, #4b6fdd);
+}
+
+.url-container > button > svg {
+  width: 1.41rem; /* <- sqrt(2)     PRZEPIS:       daddy_width / sqrt(2) */
+  height: 1.41rem; /* <-  PRZEPIS:       daddy_height / sqrt(2) */
+
+  stroke: white;
+
+  display: flex;
+}
+.url-container > button > svg > path {
+  stroke: white;
+}
+
+/* #region TOOLTIP */
+
+.url-container .tooltip {
+  position: absolute;
+  background: var(--accent, #4b6fdd);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -2.5rem;
+  height: 1.5rem;
+  white-space: nowrap;
+
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  transform: translateY(20%);
+  opacity: 0;
+
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+.url-container *:hover > .tooltip {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+.url-container .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.5rem solid transparent;
+  border-top-color: var(--accent, blue);
+}
+
+/* #endregion TOOLTIP */
+
+.url-container > a {
+  white-space: nowrap;
+  width: 20rem;
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin: 0 0.5rem;
+}
+
+#qrcode {
+  box-sizing: margin-box;
+
+  width: 20rem;
+  height: 20rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+
+  outline: 0.125rem solid var(--primary, #4b6fdd);
+  outline-offset: 0.25rem;
+  filter: drop-shadow(0 0 0.5rem var(--primary));
+}

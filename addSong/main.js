@@ -42,8 +42,6 @@ async function createPlaylist() {
 
 createPlaylist();
 
-// THIS IS ALL TEMPORARY CODE, WILL BE REMOVED LATER FOR IMPROVED FUNCTIONALITY
-
 search_frm.addEventListener('click', async (e) => {
   document.getElementById('search-overlay').style.display = 'flex';
   document.getElementById('search').focus();
@@ -64,6 +62,7 @@ function addTrackToPlaylistClick(uri) {
 search_frm.addEventListener('keydown', async (e) => {
   const query = search_frm.value;
   console.log(query);
+  if (!query.trim()) return;
   const result = await search(query, token);
   console.log(result);
   let tracks = result.tracks.items;
@@ -84,6 +83,8 @@ search_frm.addEventListener('keydown', async (e) => {
     card.classList.add('card', 'result-card');
     card.addEventListener('click', () => {
       addTrackToPlaylistClick(uri);
+      document.getElementById('playlist').innerHTML = '';
+      createPlaylist();
     });
 
     const img = document.createElement('img');
@@ -116,6 +117,9 @@ search_frm.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
     addTracksToPlaylist(playlistId, token, [track.uri]);
     search_frm.value = '';
+    console.log('enter');
+    document.getElementById('playlist').innerHTML = '';
+    createPlaylist();
   }
 });
 

@@ -5,18 +5,25 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.0.0_
+_Current Release: v1.1.0_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
 
-## Release 1.0.1
- - Fixed Vite Error
+## Release 1.1.0
+
+- Redesign of `become-host` page
+- Fixed styling for QR code, and made URL shortened
+- Made URL text secure
+- Fixed QR Code
+- Fixed bug with token-expired error when searching with a blank query
+- Added refresh to playlist when added something new
 
 ## Release 1.0.0
- - Added functionality for searching
- - Added playlist
- - Working on addSong
- - Changed to release URL's
+
+- Added functionality for searching
+- Added playlist
+- Working on addSong
+- Changed to release URL's
 
 ## Pre-release 0.1.2
 

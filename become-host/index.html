@@ -105,6 +105,7 @@
         </div>
                 <canvas id="qrcode"></canvas>
         </div>
+        <button onclick="window.print()"> Print QR Code </button>
             <div id="printMenu">
       <span>Scan QR Code to Play Your Song!</span>
     </div>
@@ -129,7 +130,6 @@
           document.getElementById('qrcode').replaceWith(qr);
           qr.id = 'qrcode';
           // Make the QR code work in print mode
-          window.print();
         }
       );
 

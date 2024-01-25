@@ -85,9 +85,9 @@
     if (response) {
       Uid = response.returnUserCode[0];
       token = response.token[0];
-      // const playlist = await createPublicPlaylist(token);
-      // addRecommendedTracks(token, playlist.id);
-      const playlist = { id: 'test-234' };
+      const playlist = await createPublicPlaylist(token);
+      addRecommendedTracks(token, playlist.id);
+      // const playlist = { id: 'test-234' };
 
       document.body.innerHTML = `<h1>Playlist Created!</h1>
         <h2>Share this URL with anyone, to add songs to the playlist!</h2>

@@ -17,6 +17,7 @@ const search_frm = document.getElementById('search');
 
 async function createPlaylist() {
   const playlist = document.getElementById('playlist');
+  playlist.innerHTML = '';
 
   let tracks = await getPlaylistTracks(playlistId, token);
   tracks = tracks.items;

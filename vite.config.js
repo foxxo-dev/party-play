@@ -1,28 +1,27 @@
-// vite.config.js
+import topLevelAwait from 'vite-plugin-top-level-await';
+
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import copy from 'rollup-plugin-copy'; // Make sure to install the rollup-plugin-copy package
 
 export default defineConfig({
-  // other Vite configurations...
-
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets', // Optional: You can change this directory if needed
     rollupOptions: {
-      input: 'index.html',
-      plugins: [
-        copy({
-          targets: [
-            { src: 'js/', dest: 'dist' },
-            { src: 'become-host/', dest: 'dist' },
-            { src: 'auth/', dest: 'dist' },
-            { src: 'assets/', dest: 'dist' },
-            { src: 'addSong/', dest: 'dist' },
-            { src: 'terms-and-conditions/', dest: 'dist' }
-          ],
-          hook: 'writeBundle' // Copy after bundling
-        })
-      ]
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        'become-host': resolve(__dirname, 'become-host/index.html'),
+        auth_process: resolve(__dirname, 'auth/process.html'),
+        auth_error: resolve(__dirname, 'auth/error.html'),
+        auth_success: resolve(__dirname, 'auth/success.html'),
+        addSong: resolve(__dirname, 'addSong/index.html')
+      }
     }
-  }
+  },
+  plugins: [
+    topLevelAwait({
+      // The export name of top-level await promise for each chunk module
+      promiseExportName: '__tla',
+      // The function to generate import names of top-level await promise in each chunk module
+      promiseImportName: (i) => `__tla_${i}`
+    })
+  ]
 });

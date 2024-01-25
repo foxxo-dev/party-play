@@ -5,9 +5,14 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.1.0_
+_Current Release: v1.1.1_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
+
+## Release 1.1.1
+
+- Added Support For Top-Level-Await
+- Updated Export Settings
 
 ## Release 1.1.0
 

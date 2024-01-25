@@ -87,6 +87,7 @@
       token = response.token[0];
       const playlist = await createPublicPlaylist(token);
       addRecommendedTracks(token, playlist.id);
+
       // const playlist = { id: 'test-234' };
 
       document.body.innerHTML = `<h1>Playlist Created!</h1>

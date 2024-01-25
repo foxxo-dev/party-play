@@ -6,15 +6,67 @@
     <title>Become Host</title>
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/becomehost.css" />
+    <!-- <link rel="stylesheet" href="../styles/print.css" /> -->
     <style>
       a {
         max-width: 50ch;
         word-wrap: break-word;
       }
+
+      #printMenu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999999999;
+        width: 100%;
+        height: 100%;
+        background: white;
+        color: black;
+        display: none;
+        pointer-events: none;
+      }
+
+      #printMenu span {
+        position: absolute;
+        top: 2cm;
+        left: 50%;
+        font-size: 2rem;
+        font-weight: 800;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+      }
+
+      @media print {
+        #qrcode {
+          display: inline-block !important;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 10cm;
+          height: 10cm;
+          aspect-ratio: 1;
+          z-index: 999999999999;
+          filter: none;
+        }
+        #printMenu {
+          display: flex !important;
+        }
+        #attribution {
+          filter: invert(1);
+          z-index: 9999999999999999 !important;
+          display: flex;
+          position: absolute;
+          bottom: 0.5cm;
+          right: 0.5cm;
+        }
+      }
     </style>
   </head>
   <body>
     <p>We are creating your playlist now...</p>
+    <canvas id="qrcode"></canvas>
   </body>
 
   <script type="module">
@@ -33,9 +85,9 @@
     if (response) {
       Uid = response.returnUserCode[0];
       token = response.token[0];
-      const playlist = await createPublicPlaylist(token);
-      addRecommendedTracks(token, playlist.id);
-      // const playlist = { id: 'test-234' };
+      // const playlist = await createPublicPlaylist(token);
+      // addRecommendedTracks(token, playlist.id);
+      const playlist = { id: 'test-234' };
 
       document.body.innerHTML = `<h1>Playlist Created!</h1>
         <h2>Share this URL with anyone, to add songs to the playlist!</h2>
@@ -51,8 +103,12 @@
                   https://party-play.foxxo.studio/addSong/index.html?playlistId=SECRET&userId=SECRET&token=SECRET
           </a>
         </div>
-        <canvas id="qrcode"></canvas>
-        </div>`;
+                <canvas id="qrcode"></canvas>
+        </div>
+            <div id="printMenu">
+      <span>Scan QR Code to Play Your Song!</span>
+    </div>
+        `;
 
       QRCode.toCanvas(
         document.getElementById('qrcode'),
@@ -60,6 +116,20 @@
         function (error) {
           if (error) console.error(error);
           console.log('success!');
+          // Make the QR code work
+          document
+            .querySelector('.url-container button')
+            .addEventListener('click', () => {
+              navigator.clipboard.writeText(
+                `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`
+              );
+            });
+          const qr = document.createElement('img');
+          qr.src = document.getElementById('qrcode').toDataURL();
+          document.getElementById('qrcode').replaceWith(qr);
+          qr.id = 'qrcode';
+          // Make the QR code work in print mode
+          window.print();
         }
       );
 

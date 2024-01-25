@@ -11,5 +11,6 @@ export function createAttr(container) {
   }
   img.style =
     'position: fixed; bottom: 0.5rem; right: 0.5rem; z-index: 1000; width: 100px;';
+  img.id = 'attribution'
   container.appendChild(img);
 }

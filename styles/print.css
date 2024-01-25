@@ -1,0 +1,29 @@
+@media print {
+  body * {
+    display: none !important;
+  }
+
+  h2#print-title,
+  #qrcode {
+    display: block !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+
+  h2#print-title {
+    margin-top: 2cm;
+    display: inline-block;
+  }
+
+  #qrcode {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

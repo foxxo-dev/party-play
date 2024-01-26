@@ -22,7 +22,7 @@
     import { parseURLParams } from '../js/params-parser.js';
 
     console.log(parseURLParams(window.location.href));
-    const { code, token } = parseURLParams(window.location.href);
+    const { code, token, refresh_token } = parseURLParams(window.location.href);
 
     
     setInterval(makeAlert, 1000);

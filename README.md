@@ -8,14 +8,21 @@
 _Current Release: v1.1.3_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
+**TOKEN IS ONLY VALID FOR 1 HOUR, TO REFRESH REFRESH TOKEN IS NEEDED**
+
+## Release 1.1.4
+
+- Improved to add 10 recommended songs instead of 5
+- Started progress on refreshing token (Commented out for release version)
 
 ## Release 1.1.3
- - Added Print Menu
 
+- Added Print Menu
 
 ## Release 1.1.2
- - Updated Build Settings
- - Added Discord Embeds
+
+- Updated Build Settings
+- Added Discord Embeds
 
 ## Release 1.1.1
 

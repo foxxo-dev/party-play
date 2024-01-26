@@ -42,7 +42,7 @@
 
         if (data.access_token) {
           // Redirect with the token and code
-          window.location.href = `/auth/success.html?token=${data.access_token}&code=${code[0]}`;
+          window.location.href = `/auth/success.html?token=${data.access_token}&code=${code[0]}&refresh_token=${data.refresh_token}`;
         } else {
           // Handle error, e.g., redirect to an error page
           window.location.href = '/auth/error.html?error=token_exchange_failed';

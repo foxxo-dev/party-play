@@ -64,7 +64,7 @@ export async function getPlaylistTracks(playlistId, token) {
     token,
     'GET'
   );
-  console.log(response);
+  console.log('DATA: ', response.data);
   return response;
 }
 
@@ -75,19 +75,24 @@ export async function getTopTracks(token) {
 }
 
 async function getRecommendations(token, topTracksIds) {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-recommendations
-  return (
-    await fetchWebApi(
-      `recommendations?limit=5&seed_tracks=${topTracksIds.join(',')}`,
-      token,
-      'GET'
-    )
-  ).tracks;
+  const trackSeeds = topTracksIds.join(',');
+  console.log(trackSeeds);
+  const response = await fetchWebApi(
+    `recommendations?limit=10&seed_tracks=${trackSeeds}`,
+    token,
+    'GET'
+  );
+
+  console.log(response);
+
+  const data = await response;
+  return data.tracks || [];
 }
 
 export async function addRecommendedTracks(token, playlistId) {
   const topTracks = await getTopTracks(token);
   const topTracksIds = topTracks.map((track) => track.id);
+  console.log(topTracksIds);
   const recommendations = await getRecommendations(token, topTracksIds);
   console.log(recommendations);
   const recommendationsUri = recommendations.map((track) => track.uri);
@@ -105,4 +110,26 @@ export async function addTracksToPlaylist(playlistId, token, uris) {
   );
   console.log(response);
   return response;
+}
+
+export function refreshToken(refreshToken) {
+  const body = {
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken
+  };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${btoa(
+        `${import.meta.env.VITE_CLIENT_ID}:${
+          import.meta.env.VITE_CLIENT_SECRET
+        }`
+      )}`
+    },
+    body: new URLSearchParams(body)
+  };
+
+  return fetch('https://accounts.spotify.com/api/token', options);
 }

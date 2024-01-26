@@ -11,9 +11,14 @@ import { createTermsPopup } from '../js/terms-popup';
 createAttr(document.body);
 createTermsPopup(document.body);
 
-const { playlistId, userId, token } = parseURLParams(window.location.href);
+var { playlistId, userId, token } = parseURLParams(window.location.href);
 
 const search_frm = document.getElementById('search');
+
+console.log('--------------------------------------');
+token = await refreshToken(token);
+
+console.log(token);
 
 async function createPlaylist() {
   const playlist = document.getElementById('playlist');

@@ -90,7 +90,7 @@
       const playlist = await createPublicPlaylist(token);
       addRecommendedTracks(token, playlist.id);
 
-      // refresh_token = response.rt[0];
+      refresh_token = response.refresh_token[0];
       // timestamp = response.timestmp[0];
 
       // If 59 minutes passed by from the timestamp, refresh the token
@@ -130,7 +130,7 @@
               <span>Copy URL</span>
             </div>
           </button>                                                 
-          <a href="/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}">
+          <a href="/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}">
                   https://party-play.foxxo.studio/addSong/index.html?playlistId=SECRET&userId=SECRET&token=SECRET
           </a>
         </div>
@@ -144,7 +144,7 @@
 
       QRCode.toCanvas(
         document.getElementById('qrcode'),
-        `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`,
+        `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`,
         function (error) {
           if (error) console.error(error);
           console.log('success!');
@@ -153,7 +153,7 @@
             .querySelector('.url-container button')
             .addEventListener('click', () => {
               navigator.clipboard.writeText(
-                `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${token}`
+                `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`
               );
             });
           const qr = document.createElement('img');

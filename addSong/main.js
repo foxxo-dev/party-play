@@ -7,6 +7,7 @@ import { parseURLParams } from '../js/params-parser.js';
 
 import { createAttr } from '../js/attribution';
 import { createTermsPopup } from '../js/terms-popup';
+import { refreshToken } from '../js/spotify-calls.js';
 
 createAttr(document.body);
 createTermsPopup(document.body);
@@ -16,7 +17,8 @@ var { playlistId, userId, token } = parseURLParams(window.location.href);
 const search_frm = document.getElementById('search');
 
 console.log('--------------------------------------');
-token = await refreshToken(token);
+console.log('REFRESH TOKEN HOST: ', token);
+token = await refreshToken(token).then((res) => res.access_token);
 
 console.log(token);
 

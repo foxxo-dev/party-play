@@ -87,10 +87,11 @@
     if (response) {
       Uid = response.returnUserCode[0];
       token = response.token[0];
+      refresh_token = response.refresh_token[0];
+      console.log('REFRESH TOKEN HOST: ', refresh_token);
       const playlist = await createPublicPlaylist(token);
       addRecommendedTracks(token, playlist.id);
 
-      refresh_token = response.refresh_token[0];
       // timestamp = response.timestmp[0];
 
       // If 59 minutes passed by from the timestamp, refresh the token

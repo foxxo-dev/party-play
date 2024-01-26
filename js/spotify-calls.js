@@ -22,7 +22,7 @@ async function fetchWebApi(endpoint, token, method, body) {
   console.log(data);
 
   if (data.error) {
-    window.location.href = '../auth/error.html?error=token-expired&state=401';
+    // window.location.href = '../auth/error.html?error=token-expired&state=401';
     throw new Error(data.error.message);
   }
 
@@ -112,24 +112,35 @@ export async function addTracksToPlaylist(playlistId, token, uris) {
   return response;
 }
 
-export function refreshToken(refreshToken) {
-  const body = {
+export async function refreshToken(refreshToken) {
+  console.log('REFRESH TOKEN: ', refreshToken);
+
+  const body = new URLSearchParams({
     grant_type: 'refresh_token',
     refresh_token: refreshToken
-  };
+  });
+
+  const clientId = '45b1711a56714857811215f27b15ffc7';
+  const clientSecret = 'd009262d84014f33a5fe5dddf731248f';
 
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${btoa(
-        `${import.meta.env.VITE_CLIENT_ID}:${
-          import.meta.env.VITE_CLIENT_SECRET
-        }`
-      )}`
+      Authorization: 'Basic ' + btoa(`${clientId}:${clientSecret}`)
     },
-    body: new URLSearchParams(body)
+    body: body
   };
 
-  return fetch('https://accounts.spotify.com/api/token', options);
+  try {
+    const response = await fetch(
+      'https://accounts.spotify.com/api/token',
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error refreshing token:', error);
+    throw error;
+  }
 }

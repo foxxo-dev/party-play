@@ -5,10 +5,15 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.1.3_
+_Current Release: v1.1.5_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS TOKEN AND USER ID** _Please fix in future updates_
 **TOKEN IS ONLY VALID FOR 1 HOUR, TO REFRESH REFRESH TOKEN IS NEEDED**
+
+## Release 1.1.5
+ - Added security to URL, by passing refresh token
+ - Increased 1 hour QR code lifespan to infinity
+
 
 ## Release 1.1.4
 

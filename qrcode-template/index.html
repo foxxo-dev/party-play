@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR CODE DOWNLOAD TEMPLATE</title>
+    <style>
+      html,
+      body {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      #qrcode {
+        width: 6cm;
+        height: 6cm;
+        position: absolute;
+        top: 14.4cm;
+        left: 4.85cm;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../assets/print_template.png" alt="print template" />
+  </body>
+  <script type="module">
+    import { parseURLParams } from '../js/params-parser.js';
+    import QRCode from 'qrcode';
+    const params = parseURLParams(window.location.href);
+    // Base 64 encoded code
+    const urlCodeEncoded = params.code[0];
+    const urlCode = atob(urlCodeEncoded);
+    console.log('URL: ', urlCode);
+    if (urlCode) {
+      QRCode.toDataURL(
+        urlCode,
+        { errorCorrectionLevel: 'H' },
+        function (err, url) {
+          if (err) throw err;
+          const img = document.createElement('img');
+          img.src = url;
+          img.id = 'qrcode';
+          document.body.appendChild(img);
+        }
+      );
+      window.print;
+    } else {
+      window.location.href = '/auth/error.html?error=invalid_code';
+    }
+  </script>
+</html>

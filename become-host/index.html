@@ -68,7 +68,21 @@
     <p>We are creating your playlist now...</p>
     <canvas id="qrcode"></canvas>
   </body>
-
+  <script type="module">
+    import { parseURLParams } from '../js/params-parser.js';
+    var response = parseURLParams(window.location.href);
+    var Uid = response.returnUserCode[0];
+    var refresh_token = response.refresh_token[0];
+    window.addEventListener('load', () => {
+      function printCode() {
+        window.location.href =
+          '/qrcode-template/index.html?code=' +
+          btoa(
+            `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`
+          );
+      }
+    });
+  </script>
   <script type="module">
     import { createAttr } from '../js/attribution';
     import {
@@ -130,14 +144,18 @@
             <div class='tooltip'>
               <span>Copy URL</span>
             </div>
-          </button>                                                 
+          </button>
           <a href="/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}">
                   https://party-play.foxxo.studio/addSong/index.html?playlistId=SECRET&userId=SECRET&token=SECRET
           </a>
         </div>
                 <canvas id="qrcode"></canvas>
         </div>
-        <button onclick="window.print()"> Print QR Code </button>
+        <button onclick="window.location.href =
+        '/qrcode-template/index.html?code=' +
+        btoa(
+          \`https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}\`
+        );"> Print QR Code </button>
             <div id="printMenu">
       <span>Scan QR Code to Play Your Song!</span>
     </div>

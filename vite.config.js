@@ -14,6 +14,7 @@ export default defineConfig({
         auth_error: resolve(__dirname, 'auth/error.html'),
         auth_success: resolve(__dirname, 'auth/success.html'),
         addSong: resolve(__dirname, 'addSong/index.html'),
+        'qrcode-template': resolve(__dirname, 'qrcode-template/index.html'),
         'terms-and-conditions-us': resolve(
           __dirname,
           'terms-and-conditions/us/index.html'

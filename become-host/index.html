@@ -6,6 +6,7 @@
     <title>Become Host</title>
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/becomehost.css" />
+      <link rel="icon" href="../assets/icon.svg" />
     <!-- <link rel="stylesheet" href="../styles/print.css" /> -->
     <style>
       a {
@@ -68,21 +69,6 @@
     <p>We are creating your playlist now...</p>
     <canvas id="qrcode"></canvas>
   </body>
-  <script type="module">
-    import { parseURLParams } from '../js/params-parser.js';
-    var response = parseURLParams(window.location.href);
-    var Uid = response.returnUserCode[0];
-    var refresh_token = response.refresh_token[0];
-    window.addEventListener('load', () => {
-      function printCode() {
-        window.location.href =
-          '/qrcode-template/index.html?code=' +
-          btoa(
-            `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`
-          );
-      }
-    });
-  </script>
   <script type="module">
     import { createAttr } from '../js/attribution';
     import {

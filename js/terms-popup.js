@@ -17,7 +17,7 @@ export function createTermsPopup(div_container) {
     <button class="terms-popup__button" id="popup-agree">I agree</button>
     <button class="terms-popup__button terms-popup__button--secondary">I disagree</button>
     </div>
-    <a class="terms-popup__link" href="./terms-and-conditions/spotify/index.html" target="_blank">Full Terms and Conditions</a>
+    <a class="terms-popup__link" href="./terms-and-conditions/index.html" target="_blank">Full Terms and Conditions</a>
     `;
   container.classList.add('terms-popup');
 

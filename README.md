@@ -5,11 +5,16 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.1.6_
+_Current Release: v1.1.7_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS  REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
-## Release 1.1.6
+## Patch 1.1.7
+
+ - Added Logo
+ - Improved discord embed?
+
+## Patch 1.1.6
 
 - Added page for printing
 - Custom Printing template

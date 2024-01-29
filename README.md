@@ -5,41 +5,41 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.1.5_
+_Current Release: v1.1.6_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS  REFRESH TOKEN AND USER ID** _Please fix in future updates_
-**TOKEN IS ONLY VALID FOR 1 HOUR, TO REFRESH REFRESH TOKEN IS NEEDED**
 
 ## Release 1.1.6
 
 - Added page for printing
 - Custom Printing template
 
-## Release 1.1.5
+## Patch 1.1.5
 
 - Added security to URL, by passing refresh token
 - Increased 1 hour QR code lifespan to infinity
+- Refreshing token automatically on update
 
-## Release 1.1.4
+## Patch 1.1.4
 
 - Improved to add 10 recommended songs instead of 5
 - Started progress on refreshing token (Commented out for release version)
 
-## Release 1.1.3
+## Patch 1.1.3
 
 - Added Print Menu
 
-## Release 1.1.2
+## Patch 1.1.2
 
 - Updated Build Settings
 - Added Discord Embeds
 
-## Release 1.1.1
+## Patch 1.1.1
 
 - Added Support For Top-Level-Await
 - Updated Export Settings
 
-## Release 1.1.0
+## Minor Release 1.1.0
 
 - Redesign of `become-host` page
 - Fixed styling for QR code, and made URL shortened
@@ -55,14 +55,14 @@ _Current Release: v1.1.5_
 - Working on addSong
 - Changed to release URL's
 
-## Pre-release 0.1.2
+## Pre-release Patch 0.1.2
 
 - Improved README.md
 - Added countdown for the success page
 - Fixed add song, and added the feature to do so
 - Made auto-add 5 recommended songs
 
-## Pre-release 0.1.1
+## Pre-release Patch 0.1.1
 
 - Fixed a bug with express.js (removed it)
 - Added search functionality into backend

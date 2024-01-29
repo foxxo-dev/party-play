@@ -7,12 +7,12 @@
 
 _Current Release: v1.1.7_
 
-**NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS  REFRESH TOKEN AND USER ID** _Please fix in future updates_
+**NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 ## Patch 1.1.7
 
- - Added Logo
- - Improved discord embed?
+- Added Logo
+- Improved discord embed?
 
 ## Patch 1.1.6
 

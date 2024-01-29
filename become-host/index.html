@@ -98,7 +98,8 @@
     var refresh_token = '';
     var timestamp = '';
 
-    if (response) {
+    if (response || response == []) {
+      console.log(response);
       Uid = response.returnUserCode[0];
       token = response.token[0];
       refresh_token = response.refresh_token[0];
@@ -190,6 +191,5 @@
         '%20'
       )}&state=123`;
     }
-    console.log(Uid);
   </script>
 </html>

@@ -60,8 +60,8 @@ search_frm.addEventListener('click', async (e) => {
   document.getElementById('search').style.zIndex = '110';
 });
 
-function addTrackToPlaylistClick(uri) {
-  addTracksToPlaylist(playlistId, token, [uri]);
+async function addTrackToPlaylistClick(uri) {
+  await addTracksToPlaylist(playlistId, token, [uri]);
   document.getElementById('search-overlay').style.display = 'none';
   document.getElementById('search').value = '';
   document.getElementById('playlist').innerHTML = '';
@@ -91,10 +91,10 @@ search_frm.addEventListener('keydown', async (e) => {
 
     const card = document.createElement('div');
     card.classList.add('card', 'result-card');
-    card.addEventListener('click', () => {
-      addTrackToPlaylistClick(uri);
-      document.getElementById('playlist').innerHTML = '';
-      createPlaylist();
+    card.addEventListener('click', async () => {
+      await addTrackToPlaylistClick(uri);
+      document.getElementById('playlist').innerHTML = 'Loading...';
+      await createPlaylist();
     });
 
     const img = document.createElement('img');
@@ -125,7 +125,7 @@ search_frm.addEventListener('keydown', async (e) => {
   });
 
   if (e.key === 'Enter') {
-    addTracksToPlaylist(playlistId, token, [track.uri]);
+    addTracksToPlaylist(playlistId, token, [trackObj.uri]);
     search_frm.value = '';
     console.log('enter');
     document.getElementById('playlist').innerHTML = '';

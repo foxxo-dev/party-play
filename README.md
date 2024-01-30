@@ -5,19 +5,19 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.1.8**
+**Current Release: v1.2.0**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
-
 # Version History
 
+## Minor Release 1.2.0
 
-## Patch 1.1.8
-
-- Fixed AddSong Styling
+- Redesign AddSong Styling
+- Remade Logic of AddSong
 - Removed weird placement of searchbox
 - Made element height relative to the available screen size ( -keyboard field on mobile )
+- Added Refresh of playlist after adding song
 
 ## Patch 1.1.7
 

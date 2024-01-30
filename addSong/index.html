@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="../styles/reset.css" />
     <link rel="stylesheet" href="../styles/addsong.css" />
     <link rel="icon" href="../assets/icon.svg" />
+    <style>
+      .gradient-txt {
+        background: linear-gradient(
+          90deg,
+          var(--primary, blue),
+          var(--accent, blue)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
   <body>
     <h1>
       AT A PARTY?<br />
-      ADD A SONG
+      <span class="gradient-txt">A SONG</span>
     </h1>
     <input
       id="search"

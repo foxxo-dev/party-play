@@ -11,12 +11,17 @@
 
 # Version History
 
+## Patch 1.3.1
+
+- Added Preview of link in `become-host`
+- (REQUIRES REDESIGN)
+
 ## Minor Release 1.3.0
 
- - Update playlist creation and fetchWebApi function
- - Remove song after being played from playlist
- - Cleaning up of code
- - Updating playlist after deletion of song
+- Update playlist creation and fetchWebApi function
+- Remove song after being played from playlist
+- Cleaning up of code
+- Updating playlist after deletion of song
 
 ## Patch 1.2.2
 

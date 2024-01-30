@@ -49,6 +49,7 @@ async function createPlaylist() {
 }
 
 createPlaylist();
+setInterval(createPlaylist, 20000);
 
 search_frm.addEventListener('click', async (e) => {
   document.getElementById('search-overlay').style.display = 'flex';

@@ -16,6 +16,7 @@
  - Update playlist creation and fetchWebApi function
  - Remove song after being played from playlist
  - Cleaning up of code
+ - Updating playlist after deletion of song
 
 ## Patch 1.2.2
 

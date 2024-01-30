@@ -11,6 +11,12 @@
 
 # Version History
 
+## Patch 1.2.1
+
+ - Reduced URL Length
+ - Made URL size smaller
+
+
 ## Minor Release 1.2.0
 
 - Redesign AddSong Styling

@@ -12,7 +12,7 @@ import { refreshToken } from '../js/spotify-calls.js';
 createAttr(document.body);
 createTermsPopup(document.body);
 
-var { playlistId, userId, token } = parseURLParams(window.location.href);
+var { playlistId, token } = parseURLParams(window.location.href);
 
 const search_frm = document.getElementById('search');
 

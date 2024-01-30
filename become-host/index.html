@@ -132,8 +132,8 @@
               <span>Copy URL</span>
             </div>
           </button>
-          <a href="/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}">
-                  https://party-play.foxxo.studio/addSong/index.html?playlistId=SECRET&userId=SECRET&token=SECRET
+          <a href="/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}">
+                  https://party-play.foxxo.studio/addSong/index.html?playlistId=SECRET&token=SECRET
           </a>
         </div>
                 <canvas id="qrcode"></canvas>
@@ -141,7 +141,7 @@
         <button onclick="window.location.href =
         '/qrcode-template/index.html?code=' +
         btoa(
-          \`https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}\`
+          \`https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}\`
         );"> Print QR Code </button>
             <div id="printMenu">
       <span>Scan QR Code to Play Your Song!</span>
@@ -150,7 +150,7 @@
 
       QRCode.toCanvas(
         document.getElementById('qrcode'),
-        `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`,
+        `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`,
         function (error) {
           if (error) console.error(error);
           console.log('success!');
@@ -159,7 +159,7 @@
             .querySelector('.url-container button')
             .addEventListener('click', () => {
               navigator.clipboard.writeText(
-                `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&userId=${Uid}&token=${refresh_token}`
+                `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`
               );
             });
           const qr = document.createElement('img');

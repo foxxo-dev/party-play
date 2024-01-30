@@ -18,6 +18,7 @@
 - Removed weird placement of searchbox
 - Made element height relative to the available screen size ( -keyboard field on mobile )
 - Added Refresh of playlist after adding song
+- Added Figma Design of Landing Page ( [FIGMA DESIGN](https://www.figma.com/file/CrPXHoAOUW6HrqDmiDsws4/Party-Play?type=design&node-id=0%3A1&mode=design&t=GgzXmzHeYvNKLQb5-1) )
 
 ## Patch 1.1.7
 

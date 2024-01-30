@@ -1,25 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
-  --text: #080a11;
-  --background: #e9ecf6;
-  --primary: #1f3065;
-  --secondary: #8198df;
-  --accent: #2247b4;
+  --text: #eceef6;
+  --background: #090c17;
+  --primary: #98a9df;
+  --secondary: #203880;
+  --accent: #4b6fdd;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #eceef6;
-    --background: #090c17;
-    --primary: #98a9df;
-    --secondary: #203880;
-    --accent: #4b6fdd;
-  }
-}
-
-
-
-
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document

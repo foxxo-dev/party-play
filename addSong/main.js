@@ -16,8 +16,8 @@ var { playlistId, userId, token } = parseURLParams(window.location.href);
 
 const search_frm = document.getElementById('search');
 
-console.log('--------------------------------------');
-console.log('REFRESH TOKEN HOST: ', token);
+// console.log('--------------------------------------');
+// console.log('REFRESH TOKEN HOST: ', token);
 token = await refreshToken(token).then((res) => res.access_token);
 
 console.log(token);
@@ -64,6 +64,8 @@ function addTrackToPlaylistClick(uri) {
   addTracksToPlaylist(playlistId, token, [uri]);
   document.getElementById('search-overlay').style.display = 'none';
   document.getElementById('search').value = '';
+  document.getElementById('playlist').innerHTML = '';
+  document.getElementById('search').style.transform = 'translateX(0%)';
   document.getElementById('search').style.position = 'initial';
 }
 

@@ -4,6 +4,6 @@
   - [ ] How it works
   - [ ] About the Developer
   - [ ] Pricing ?
-  - [ ] Contact
+  - [ ] Contact ?
 
 - [ ] Footer

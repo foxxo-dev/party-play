@@ -5,9 +5,15 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-_Current Release: v1.1.7_
+_Current Release: v1.1.8_
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
+
+## Patch 1.1.8
+
+- Fixed AddSong Styling
+- Removed weird placement of searchbox
+- Made element height relative to the available screen size ( -keyboard field on mobile )
 
 ## Patch 1.1.7
 

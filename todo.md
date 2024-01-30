@@ -1,4 +1,4 @@
-- [ ] Create An Imrpoved Landing Page
+- [ ] Create An Improved Landing Page
 
   - [ ] Image
   - [ ] How it works

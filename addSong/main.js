@@ -24,11 +24,11 @@ console.log(token);
 
 async function createPlaylist() {
   const playlist = document.getElementById('playlist');
-  playlist.innerHTML = '';
 
   let tracks = await getPlaylistTracks(playlistId, token);
   tracks = tracks.items;
 
+  playlist.innerHTML = '<span class="play-title>Next Song: </span>';
   tracks.forEach((trackObj) => {
     const track = trackObj.track;
 

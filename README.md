@@ -5,11 +5,17 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.2.0**
+**Current Release: v1.3.0**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 # Version History
+
+## Minor Release 1.3.0
+
+ - Update playlist creation and fetchWebApi function
+ - Remove song after being played from playlist
+ - Cleaning up of code
 
 ## Patch 1.2.2
 

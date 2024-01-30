@@ -1,4 +1,5 @@
-async function fetchWebApi(endpoint, token, method, body) {
+export async function fetchWebApi(endpoint, token, method, body) {
+  console.log('CALLED!');
   const options = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -10,23 +11,36 @@ async function fetchWebApi(endpoint, token, method, body) {
   // Include the request body if provided
   if (body) {
     options.body = JSON.stringify(body);
+    console.log('BODY: ', options.body);
   }
 
-  const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, options);
+  try {
+    const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, options);
 
-  if (res.status === 204) {
-    return;
+    if (!res.ok) {
+      console.error('Error in fetchWebApi. HTTP status:', res.status);
+      return;
+    }
+
+    if (res.status === 204) {
+      return;
+    }
+
+    const data = await res.json();
+    console.log('Response data:', data);
+
+    if (data.error) {
+      console.error("DATA ERROR")
+      throw new Error(data.error.message);
+    }
+
+    console.log('RETURNING DATA: ', data);
+
+    return data;
+  } catch (error) {
+    console.error('Error in fetchWebApi:', error);
+    throw error;
   }
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
-
-  if (data.error) {
-    // window.location.href = '../auth/error.html?error=token-expired&state=401';
-    throw new Error(data.error.message);
-  }
-
-  return data;
 }
 
 export async function getMe(token) {

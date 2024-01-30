@@ -12,15 +12,14 @@
 # Version History
 
 ## Patch 1.2.2
- - Cleaning Up
- - Removing song after played
 
+- Cleaning Up
+- Removing song after played
 
 ## Patch 1.2.1
 
- - Reduced URL Length
- - Made URL size smaller
-
+- Reduced URL Length
+- Made URL size smaller
 
 ## Minor Release 1.2.0
 

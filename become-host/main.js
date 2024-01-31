@@ -151,10 +151,6 @@ async function main() {
         <div id="printMenu">
           <span>Scan QR Code to Play Your Song!</span>
         </div>
-        
-        <hr style="width: 75%; border: 2px solid white; opacity: 0.5 margin-inline: auto"  />
-        <h3>Preview of Playlist</h3>
-        <iframe src="https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}" width="75%" height="480" style="border: 2px solid white; border-radius: 0.5rem; margin-inline: auto; "></iframe>
         `;
     document.querySelector('title').innerText =
       'DO NOT CLOSE | Become Host | Party Play';

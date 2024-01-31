@@ -143,11 +143,11 @@ async function main() {
           </div>
           <canvas id="qrcode"></canvas>
         </div>
-        <button onclick="window.location.href =
+        <button onclick="window.open(
           '/qrcode-template/index.html?code=' +
           btoa(
             \`https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}\`
-          );"> Print QR Code </button>
+          ), '_blank');"> Print QR Code </button>
         <div id="printMenu">
           <span>Scan QR Code to Play Your Song!</span>
         </div>

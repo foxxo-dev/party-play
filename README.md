@@ -11,12 +11,10 @@
 
 # Version History
 
-
 ## Patch 1.3.2
 
- - Fix token expiration handling
- - Fix artist name display
-
+- Fix token expiration handling
+- Fix artist name display
 
 ## Patch 1.3.1
 

@@ -19,6 +19,15 @@ export async function fetchWebApi(endpoint, token, method, body) {
 
     if (!res.ok) {
       console.error('Error in fetchWebApi. HTTP status:', res.status);
+      if (res.status === 401) {
+        console.log('401');
+        window.location.href = '/auth/error.html?error=token-expired&state=401';
+        return;
+      }
+    }
+
+    if (res.status === 401) {
+      window.location.href = '/auth/error.html?';
       return;
     }
 
@@ -30,7 +39,7 @@ export async function fetchWebApi(endpoint, token, method, body) {
     console.log('Response data:', data);
 
     if (data.error) {
-      console.error("DATA ERROR")
+      console.error('DATA ERROR');
       throw new Error(data.error.message);
     }
 

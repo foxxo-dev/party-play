@@ -5,11 +5,18 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.3.0**
+**Current Release: v1.3.2**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 # Version History
+
+
+## Patch 1.3.2
+
+ - Fix token expiration handling
+ - Fix artist name display
+
 
 ## Patch 1.3.1
 

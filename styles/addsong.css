@@ -70,6 +70,10 @@ body {
 .card > div > .artist {
   font-size: 0.8rem;
   opacity: 0.8;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  max-width: 16.5pc;
+  overflow: hidden;
 }
 .card > img {
   width: 4rem;

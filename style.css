@@ -20,3 +20,222 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+p {
+  margin-bottom: 2rem;
+  width: 60ch;
+}
+
+/* #region WELCOME LANDING PAGE */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 14rem;
+
+  margin-bottom: 16rem;
+}
+
+main > section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+
+  height: auto;
+}
+
+.landing {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.landing > p {
+  align-self: flex-start;
+}
+
+.landing > .link-btn {
+  align-self: flex-start;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 5rem;
+  
+  cursor: pointer;
+
+  color: #ffffff;
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-down::before {
+  content: "";
+  display: block;
+  width: 0rem;
+  height: 0rem;
+
+  border-radius: 25%;
+  border-width: 1rem;
+  border-style: solid;
+  border-color: var(--primary, blue) transparent transparent  transparent;
+
+  position: absolute;
+  bottom: -3rem;
+  animation: scroll-down 2s ease infinite;
+}
+@keyframes scroll-down {
+  0%, 100% {
+    bottom: -4rem;
+  }
+  50% {
+    bottom: -3rem;
+  }
+}
+
+/* #region HOW IT WORKS */
+
+.section-how-it-works {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.section-how-it-works > h2 {
+  align-self: flex-start;
+  width: max-content;
+}
+
+#section-steps {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#section-steps > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+
+  width: clamp(1rem, 40vw, 15rem);
+}
+
+.step span {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.step .primary {
+  color: var(--primary, blue);
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.step *:not(.primary) {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* #endregion HOW IT WORKS */
+
+/* #region ABOUT DEV */
+
+.section-about-dev {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: min(80vw, 50rem);
+}
+
+.section-about-dev > h2 {
+  align-self: flex-start;
+  width: max-content;
+}
+
+.section-about-dev > span {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* #endregion ABOUT DEV */
+
+/* #endregion WELCOME LANDING PAGE */
+
+/* #region WELCOME LANDING PAGE FOOTER */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-block: 4rem;
+
+  background-image: radial-gradient(
+    at left bottom,
+    var(--primary, blue),
+    var(--background, black) 75%
+  );
+
+  padding-top: 10rem;
+}
+
+footer > div.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+  height: max-content;
+}
+
+footer > div.links > .circle {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+
+  background-color: #ffffff;
+}
+
+footer a {
+  color: white;
+}
+
+footer a::after {
+  background: white;
+}
+
+footer > div.logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+footer > div.logos > img {
+  height: clamp(1.5rem, 2vw, 8rem);
+}
+
+/* #region WELCOME LANDING PAGE FOOTER */

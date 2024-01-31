@@ -5,11 +5,19 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.3.4**
+**Current Release: v1.4.0**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 # Version History
+
+## Minor Release 1.4.0
+
+- Redesign of landing page
+- Finished Figma Design
+- Rewritten Landing Page
+- Landing Page HTML changed
+- Improved on Scroll Bar
 
 ## Patch 1.3.4
 
@@ -54,7 +62,7 @@
 - Removed weird placement of searchbox
 - Made element height relative to the available screen size ( -keyboard field on mobile )
 - Added Refresh of playlist after adding song
-- Added Figma Design of Landing Page ( [FIGMA DESIGN](https://www.figma.com/file/CrPXHoAOUW6HrqDmiDsws4/Party-Play?type=design&node-id=0%3A1&mode=design&t=GgzXmzHeYvNKLQb5-1) )
+- Added Figma Design of Landing Page ( [FIGMA DESIGN - NOT ACCURATE](https://www.figma.com/file/CrPXHoAOUW6HrqDmiDsws4/Party-Play?type=design&node-id=0%3A1&mode=design&t=GgzXmzHeYvNKLQb5-1) )
 
 ## Patch 1.1.7
 

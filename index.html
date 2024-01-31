@@ -7,6 +7,7 @@
     <title>Party Play for Spotify</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/scrollbar.css" />
 
     <!-- Copyright Content Foxxo.studio/discord-gen -->
     <!-- Generated Using Discord Gen By @foxxo-dev -->
@@ -31,13 +32,78 @@
   </head>
   <body>
     <main>
-      <h1>
-        PARTY PLAY. <br />
-        THE BEST PARTY SONGS, <br />
-        ARE <span class="gradient-txt">YOURS</span>
-      </h1>
+      <section class="landing">
+        <h1>
+          PARTY PLAY. <br />
+          THE BEST PARTY SONGS, <br />
+          ARE <span class="gradient-txt">YOURS</span>
+        </h1>
+        <p>
+          Party Play is an all in one app, where you can either host a party or
+          add your song to one! Whether you want to dance, sing along, or simply
+          have a good time, Party Play has got you covered. Become a host and
+          create your own party playlist or add your favorite songs to an
+          existing party. Let the music unite us all!
+        </p>
+        <a href="/become-host/index.html" class="link-btn">Become Host</a>
+        <a class="scroll-down" href="#down">Scroll down</a>
+      </section>
+
+      <section class="section-how-it-works" id="down">
+        <h2>How it works</h2>
+        <div id="section-steps">
+          <div class="step step-1">
+            <span class="primary">1.</span>
+            <span
+              >Become the host to generate a scannable qr code, or link!</span
+            >
+          </div>
+          <div class="step step-2">
+            <span class="primary">2.</span>
+            <span>Share the qr code, or print it on the wall!</span>
+          </div>
+          <div class="step step-2">
+            <span class="primary">3.</span>
+            <span
+              >Look at your playlist slowly fill up, and the people cheer
+              up!</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section-about-dev">
+        <h2>About the Developer</h2>
+        <span>
+          Hello! I am a developer from Poland with a strong foundation in
+          programming. I love to code, and I'm proficient in several programming
+          languages and technologies, including HTML, CSS, and JavaScript. These
+          languages enable me to craft visually appealing and interactive web
+          applications, which I thoroughly enjoy. I'm continuously expanding my
+          knowledge. When I'm not immersed in the world of programming, you can
+          often find me soaring through virtual skies in Microsoft Flight
+          Simulator, where the thrill of aviation meets the precision of
+          technology.
+        </span>
+      </section>
     </main>
-    <a href="/become-host/index.html" class="link-btn">Become Host</a>
-    <script type="module" src="/main.js"></script>
+    <footer>
+      <div class="links">
+        <a href="https://foxxo.studio">@foxxo</a>
+        <div class="circle"></div>
+        <a href="https://foxxo.studio">foxxo.studio</a>
+        <div class="circle"></div>
+        <span>Co-authored by: <a href="https://nimoweb.ddns.net">@nimo</a></span>
+        <div class="circle"></div>
+        <span> Made for <a href="https://open.spotify.com">Spotify</a></span>
+      </div>
+      <div class="logos">
+        <img src="./assets/icon.svg" alt="Party Play Icon" />
+        <img src="./assets/foxxo_logo_monotone_light2.svg" alt="@Foxxo Icon" />
+        <img src="./assets/nimo.svg" alt="@Nimo Icon" />
+        <img src="./assets/Spotify_Icon_RGB_White.png" alt="Spotify Icon" />
+      </div>
+    </footer>
   </body>
+  <script type="module" src="/main.js"></script>
 </html>

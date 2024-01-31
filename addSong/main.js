@@ -1,7 +1,8 @@
 import {
   getPlaylistTracks,
   search,
-  addTracksToPlaylist
+  addTracksToPlaylist,
+  addScan
 } from '../js/spotify-calls.js';
 import { parseURLParams } from '../js/params-parser.js';
 
@@ -19,6 +20,7 @@ const search_frm = document.getElementById('search');
 // console.log('--------------------------------------');
 // console.log('REFRESH TOKEN HOST: ', token);
 token = await refreshToken(token).then((res) => res.access_token);
+addScan(token, playlistId);
 
 console.log(token);
 

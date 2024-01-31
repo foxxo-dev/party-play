@@ -1,3 +1,5 @@
+var scans = 0;
+
 export async function fetchWebApi(endpoint, token, method, body) {
   console.log('CALLED!');
   const options = {
@@ -16,6 +18,12 @@ export async function fetchWebApi(endpoint, token, method, body) {
 
   try {
     const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, options);
+    // const responseText = await res.text(); // Log the raw response text
+    // console.log('Raw response:', responseText);
+    // if (!responseText) {
+    //   console.error('Empty response from the API');
+    //   return; // Or handle accordingly
+    // }
 
     if (!res.ok) {
       console.error('Error in fetchWebApi. HTTP status:', res.status);
@@ -56,19 +64,64 @@ export async function getMe(token) {
   return await fetchWebApi('me', token, 'GET');
 }
 
+async function getPlaylist(token, playlistId) {
+  return await fetchWebApi(`playlists/${playlistId}`, token, 'GET');
+}
+async function getScanCount(token, playlistId) {
+  const playlist = await getPlaylist(token, playlistId);
+  const description = playlist.description;
+  console.log('Original Scans: ', description.substring(0, 3));
+  const scanCount = parseInt(description.substring(0, 3));
+  return scanCount;
+}
+
+export async function addScan(token, playlistId) {
+  try {
+    const playlist = await fetchWebApi(`playlists/${playlistId}`, token, 'GET');
+    const randId = Math.floor(Math.random() * 1000000000);
+    scans = await getScanCount(token, playlistId);
+    console.log('Scans: ', scans);
+    scans++;
+    const description = `${scans}  scans. This playlist was created by Party Play, with the code ${randId}.`;
+
+    playlist.description = description;
+
+    const updatedPlaylist = await fetchWebApi(
+      `playlists/${playlistId}`,
+      token,
+      'PUT',
+      {
+        name: 'Current Party Playlist',
+        description: description,
+        public: true
+      }
+    );
+    console.log('updatePlaylistDescription response:', updatedPlaylist);
+    return updatedPlaylist;
+  } catch (error) {
+    console.error('updatePlaylistDescription error:', error);
+    throw error; // Propagate the error
+  }
+}
+
 export async function createPublicPlaylist(accessToken) {
-  const randId = Math.floor(Math.random() * 1000000000);
-  const playlistName = `Party Play Playlist #${randId}`;
-  const description =
-    'This playlist was created by Party Play. Your unique code is: ' + randId;
+  try {
+    const randId = Math.floor(Math.random() * 1000000000);
+    const playlistName = `Party Play Playlist #${randId}`;
+    const description = `0  This playlist was created by Party Play, with the code ${randId}. Note: scans are still in development.`;
 
-  const playlist = await fetchWebApi('me/playlists', accessToken, 'POST', {
-    name: playlistName,
-    public: true,
-    description
-  });
+    const playlist = await fetchWebApi('me/playlists', accessToken, 'POST', {
+      name: playlistName,
+      description,
+      public: true
+    });
 
-  return playlist;
+    console.log('createPublicPlaylist response:', playlist);
+    return playlist;
+  } catch (error) {
+    console.error('createPublicPlaylist error:', error);
+    throw error; // Propagate the error
+  }
 }
 
 export async function search(query, token) {

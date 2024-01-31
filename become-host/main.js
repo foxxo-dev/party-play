@@ -156,6 +156,11 @@ async function main() {
         <h3>Preview of Playlist</h3>
         <iframe src="https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}" width="75%" height="480" style="border: 2px solid white; border-radius: 0.5rem; margin-inline: auto; "></iframe>
         `;
+    document.querySelector('title').innerText =
+      'DO NOT CLOSE | Become Host | Party Play';
+    alert(
+      'This window is not to be closed, as it contains code that is crucial to be opened, and working during the party.'
+    );
 
     // Generate QR code after playlist is created and tracks are added
     QRCode.toCanvas(
@@ -180,9 +185,10 @@ async function main() {
     );
   } else {
     const scopes = [
-      'playlist-modify-public',
+      'playlist-modify-private',
       'user-top-read',
-      'user-read-playback-state'
+      'user-read-playback-state',
+      'playlist-modify-public'
     ];
     window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=https://party-play.foxxo.studio/auth/process.html&scope=${scopes.join(
       '%20'

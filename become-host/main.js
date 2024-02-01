@@ -6,6 +6,17 @@ import {
 import { parseURLParams } from '../js/params-parser.js';
 import QRCode from 'qrcode';
 
+async function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    try {
+      await navigator.serviceWorker.register('../js/service-worker.js');
+      console.log('Service worker registered successfully.');
+    } catch (error) {
+      console.error('Error registering service worker:', error);
+    }
+  }
+}
+
 // Function to remove a track from the playlist using Spotify Web API
 async function removeTrackFromPlaylist(token, playlistId, trackId) {
   try {
@@ -112,6 +123,9 @@ async function main() {
   var token = '';
   var refresh_token = '';
 
+  console.log('REGISTERING SW');
+  await registerServiceWorker();
+
   if (response || response == []) {
     console.log(response);
     token = response.token[0];
@@ -152,10 +166,9 @@ async function main() {
           <span>Scan QR Code to Play Your Song!</span>
         </div>
         `;
-    document.querySelector('title').innerText =
-      'DO NOT CLOSE | Become Host | Party Play';
+    document.querySelector('title').innerText = 'Become Host | Party Play';
     alert(
-      'This window is not to be closed, as it contains code that is crucial to be opened, and working during the party.'
+      'Closing this window is done under your own risk. There is a chance that if you close this window, the playlist will break. We are working on adding a feature, for the playlist to work without this window.'
     );
 
     // Generate QR code after playlist is created and tracks are added

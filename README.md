@@ -5,16 +5,21 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.4.3**
+**Current Release: v1.4.5**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 # Version History
 
+## Patch 1.4.5
+
+- Added Service Worker Support
+- Improved Alert Text
+
 ## Patch 1.4.4
 
- - Rewritten style.css
- - Bug Fixes
+- Rewritten style.css
+- Bug Fixes
 
 ## Patch 1.4.3
 

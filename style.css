@@ -39,8 +39,9 @@ main {
   margin-bottom: 16rem;
 }
 
-.landing{
+.landing {
   max-width: 60rem;
+  margin-inline: auto;
 }
 
 main > section:not(:first-child) {

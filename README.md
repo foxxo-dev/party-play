@@ -11,6 +11,11 @@
 
 # Version History
 
+## Patch 1.4.4
+
+ - Rewritten style.css
+ - Bug Fixes
+
 ## Patch 1.4.3
 
 - CSS Bug Fixes

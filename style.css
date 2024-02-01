@@ -37,8 +37,7 @@ main {
   margin-bottom: 16rem;
 }
 
-.landing,
-main > section:not(:first-child) {
+.landing, main > section:not(:first-child) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,8 +61,7 @@ main > section:not(:first-child) {
   width: 100%;
 }
 
-.landing > p,
-.landing > .link-btn {
+.landing > p, .landing > .link-btn {
   align-self: flex-start;
 }
 
@@ -94,8 +92,7 @@ main > section:not(:first-child) {
 }
 
 @keyframes scroll-down {
-  0%,
-  100% {
+  0%, 100% {
     bottom: -4rem;
   }
   50% {
@@ -104,23 +101,19 @@ main > section:not(:first-child) {
 }
 
 /* How It Works Section */
-.section-how-it-works,
-#section-steps,
-#section-steps > div {
+.section-how-it-works, #section-steps, #section-steps > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
-.section-how-it-works > h2,
-.section-about-dev > h2 {
+.section-how-it-works > h2, .section-about-dev > h2 {
   align-self: flex-start;
   width: max-content;
 }
 
-#section-steps > div,
-footer > div.links {
+#section-steps > div, footer > div.links {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -161,16 +154,11 @@ footer {
   justify-content: center;
   gap: 2rem;
   padding-block: 4rem;
-  background-image: radial-gradient(
-    at left bottom,
-    var(--primary, blue),
-    var(--background, black) 75%
-  );
+  background-image: radial-gradient(at left bottom, var(--primary, blue), var(--background, black) 75%);
   padding-top: 10rem;
 }
 
-footer > div.links,
-footer > div.logos {
+footer > div.links, footer > div.logos {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -198,20 +186,15 @@ footer > div.logos > img {
 }
 
 /* Transitions and Animations */
-#scroller,
-footer,
-.step {
+#scroller, footer, .step {
   transition: 0.5s ease-in-out;
 }
 
-.fade-off,
-.fade-out-foot,
-.step {
+.fade-off, .fade-out-foot, .step {
   opacity: 0;
 }
 
-.fade-off,
-.fade-out-foot {
+.fade-off, .fade-out-foot {
   transform: translateY(-500%) rotateX(90deg);
 }
 

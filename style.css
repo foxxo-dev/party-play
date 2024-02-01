@@ -67,6 +67,10 @@ main > section:not(:first-child) {
   position: relative;
 }
 
+.landing > h1 {
+  width: 100%;
+}
+
 .landing > p {
   align-self: flex-start;
 }
@@ -255,4 +259,24 @@ footer > div.logos > img {
 .fade-off {
   opacity: 0;
   transform: translateY(-500%) rotateX(90deg);
+}
+
+footer {
+  transition: 0.35s ease-in-out;
+}
+
+.fade-out-foot {
+  opacity: 0;
+  transform: translateY(50%) rotateX(-90deg);
+}
+
+.step {
+  transition: 0.5s ease-in-out;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateX(0%) rotateX(0deg);
 }

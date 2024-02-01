@@ -4,6 +4,10 @@ import { createTermsPopup } from './js/terms-popup';
 createAttr(document.body);
 createTermsPopup(document.body);
 
+const time_delay = (delayInms) => {
+  return new Promise((resolve) => setTimeout(resolve, delayInms));
+};
+
 window.mobileAndTabletCheck = function () {
   let check = false;
   (function (a) {
@@ -26,13 +30,67 @@ if (window.isMobile) {
     '<h1>Mobile Is Unsupported...</h1> <h1>Scan a QR Code</h1>';
 }
 
-window.addEventListener('scroll', (e) => {
+window.addEventListener('scroll', () => {
   const windowHeight = window.innerHeight;
   const scrollY = window.scrollY;
 
+  // For Scroller Fade Off
+  const scroller = document.getElementById('scroller');
   if (scrollY > windowHeight / 4) {
-    document.getElementById('scroller').classList.add('fade-off');
+    scroller.classList.add('fade-off');
   } else {
-    document.getElementById('scroller').classList.remove('fade-off');
+    scroller.classList.remove('fade-off');
+  }
+
+  // For Footer Fade In
+  const footer = document.querySelector('footer');
+  const bodyHeight = document.body.clientHeight;
+
+  if (
+    scrollY <
+    bodyHeight -
+      windowHeight -
+      (parseInt(getComputedStyle(footer).height) + 300)
+  ) {
+    footer.classList.add('fade-out-foot');
+  } else {
+    footer.classList.remove('fade-out-foot');
   }
 });
+const elements = document.getElementsByClassName('step');
+var windowHeight = window.innerHeight;
+window.addEventListener('scroll', async () => {
+  for (let i = 0; i < elements.length; i++) {
+    await setFadeClass(elements[i]);
+  }
+});
+
+async function setFadeClass(element) {
+  const elementTop = element.getBoundingClientRect().top;
+  if (elementTop - windowHeight - 100 <= 0) {
+    element.classList.add('fade-in');
+    await time_delay(500);
+  } else {
+    element.classList.remove('fade-in');
+  }
+}
+
+let delay = 0;
+window.addEventListener('resize', () => {
+  // Recalculate windowHeight on resize
+  windowHeight = window.innerHeight;
+
+  // Call setFadeClass for each element on resize
+  for (let i = 0; i < elements.length; i++) {
+    setFadeClass(elements[i]);
+  }
+});
+
+// Set timeout for initial elements fade calculation
+setTimeout(() => {
+  for (let i = 0; i < elements.length; i++) {
+    setFadeClass(elements[i]);
+  }
+}, 0);
+
+delay += 500;

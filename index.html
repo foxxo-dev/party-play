@@ -106,6 +106,14 @@
         <img src="./assets/Spotify_Icon_RGB_White.png" alt="Spotify Icon" />
       </div>
     </footer>
+    <div class="stopper" style="position: absolute; bottom: 5rem"></div>
+    <script>
+      document
+        .querySelector('.stopper')
+        .addEventListener('scroll', function (e) {
+          e.stopPropagation();
+        });
+    </script>
   </body>
   <script type="module" src="/main.js"></script>
 </html>

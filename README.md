@@ -11,6 +11,12 @@
 
 # Version History
 
+## Patch 1.4.3
+
+ - CSS Bug Fixes
+ - Added More Animations
+
+
 ## Patch 1.4.2
 
 - Added better fade off

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "qrcode": "^1.5.3",
+    "vite-plugin-css-injected-by-js": "^3.3.1",
     "vite-plugin-top-level-await": "^1.4.1"
   }
 }

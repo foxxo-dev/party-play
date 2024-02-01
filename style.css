@@ -1,8 +1,8 @@
-/* Common Styles */
 .link-btn {
   background: var(--primary, blue);
   color: var(--bg, black);
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem;
+  padding-inline: 1.25rem;
   border-radius: 0.25rem;
   font-weight: 600;
   font-size: 1.2rem;
@@ -10,7 +10,6 @@
 .link-btn::after {
   display: none;
 }
-
 h1 {
   font-weight: 900;
   max-width: 60vw;
@@ -27,22 +26,32 @@ p {
   width: 60ch;
 }
 
-/* Welcome Landing Page */
+/* #region WELCOME LANDING PAGE */
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
   gap: 14rem;
+
   margin-bottom: 16rem;
 }
 
-.landing, main > section:not(:first-child) {
+.landing {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+main > section:not(:first-child) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 2rem;
+
+  height: auto;
   max-width: 50rem;
   margin-inline: auto;
 }
@@ -54,6 +63,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   position: relative;
 }
 
@@ -61,16 +71,23 @@ main {
   width: 100%;
 }
 
-.landing > p, .landing > .link-btn {
+.landing > p {
+  align-self: flex-start;
+}
+
+.landing > .link-btn {
   align-self: flex-start;
 }
 
 .scroll-down {
   position: absolute;
   bottom: 5rem;
+
   cursor: pointer;
+
   color: #ffffff;
   font-size: 1.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,19 +97,21 @@ main {
 .scroll-down::before {
   content: '';
   display: block;
-  width: 0;
-  height: 0;
+  width: 0rem;
+  height: 0rem;
+
   border-radius: 25%;
   border-width: 1rem;
   border-style: solid;
   border-color: var(--primary, blue) transparent transparent transparent;
+
   position: absolute;
   bottom: -3rem;
   animation: scroll-down 2s ease infinite;
 }
-
 @keyframes scroll-down {
-  0%, 100% {
+  0%,
+  100% {
     bottom: -4rem;
   }
   50% {
@@ -100,25 +119,36 @@ main {
   }
 }
 
-/* How It Works Section */
-.section-how-it-works, #section-steps, #section-steps > div {
+/* #region HOW IT WORKS */
+
+.section-how-it-works {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
-.section-how-it-works > h2, .section-about-dev > h2 {
+.section-how-it-works > h2 {
   align-self: flex-start;
   width: max-content;
 }
 
-#section-steps > div, footer > div.links {
+#section-steps {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   gap: 2rem;
+}
+
+#section-steps > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+
+  width: clamp(1rem, 40vw, 15rem);
 }
 
 .step span {
@@ -136,9 +166,21 @@ main {
   font-weight: 500;
 }
 
-/* About Dev Section */
+/* #endregion HOW IT WORKS */
+
+/* #region ABOUT DEV */
+
 .section-about-dev {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   max-width: min(80vw, 50rem);
+}
+
+.section-about-dev > h2 {
+  align-self: flex-start;
+  width: max-content;
 }
 
 .section-about-dev > span {
@@ -146,7 +188,12 @@ main {
   opacity: 0.8;
 }
 
-/* Welcome Landing Page Footer */
+/* #endregion ABOUT DEV */
+
+/* #endregion WELCOME LANDING PAGE */
+
+/* #region WELCOME LANDING PAGE FOOTER */
+
 footer {
   display: flex;
   flex-direction: column;
@@ -154,22 +201,32 @@ footer {
   justify-content: center;
   gap: 2rem;
   padding-block: 4rem;
-  background-image: radial-gradient(at left bottom, var(--primary, blue), var(--background, black) 75%);
+
+  background-image: radial-gradient(
+    at left bottom,
+    var(--primary, blue),
+    var(--background, black) 75%
+  );
+
   padding-top: 10rem;
 }
 
-footer > div.links, footer > div.logos {
+footer > div.links {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+
+  gap: 2rem;
+
+  height: max-content;
 }
 
 footer > div.links > .circle {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
+
   background-color: #ffffff;
 }
 
@@ -181,25 +238,42 @@ footer a::after {
   background: white;
 }
 
+footer > div.logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
 footer > div.logos > img {
   height: clamp(1.5rem, 2vw, 8rem);
 }
 
-/* Transitions and Animations */
-#scroller, footer, .step {
+/* #region WELCOME LANDING PAGE FOOTER */
+
+#scroller {
   transition: 0.5s ease-in-out;
 }
 
-.fade-off, .fade-out-foot, .step {
+.fade-off {
   opacity: 0;
-}
-
-.fade-off, .fade-out-foot {
   transform: translateY(-500%) rotateX(90deg);
 }
 
+footer {
+  transition: 0.35s ease-in-out;
+}
+
 .fade-out-foot {
+  opacity: 0;
   transform: translateY(50%) rotateX(-90deg);
+}
+
+.step {
+  transition: 0.5s ease-in-out;
+  transform: translateX(-50%);
+  opacity: 0;
 }
 
 .fade-in {

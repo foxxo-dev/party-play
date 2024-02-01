@@ -22,5 +22,17 @@ window.mobileAndTabletCheck = function () {
 
 window.isMobile = window.mobileAndTabletCheck();
 if (window.isMobile) {
-  document.body.innerHTML = '<h1>Mobile Is Unsupported...</h1> <h1>Scan a QR Code</h1>';
+  document.body.innerHTML =
+    '<h1>Mobile Is Unsupported...</h1> <h1>Scan a QR Code</h1>';
 }
+
+window.addEventListener('scroll', (e) => {
+  const windowHeight = window.innerHeight;
+  const scrollY = window.scrollY;
+
+  if (scrollY > windowHeight / 4) {
+    document.getElementById('scroller').classList.add('fade-off');
+  } else {
+    document.getElementById('scroller').classList.remove('fade-off');
+  }
+});

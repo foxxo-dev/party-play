@@ -39,6 +39,10 @@ main {
   margin-bottom: 16rem;
 }
 
+.landing{
+  max-width: 60rem;
+}
+
 main > section:not(:first-child) {
   display: flex;
   flex-direction: column;
@@ -242,3 +246,12 @@ footer > div.logos > img {
 }
 
 /* #region WELCOME LANDING PAGE FOOTER */
+
+#scroller {
+  transition: 0.5s ease-in-out;
+}
+
+.fade-off {
+  opacity: 0;
+  transform: translateY(-500%) rotateX(90deg);
+}

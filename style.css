@@ -39,7 +39,7 @@ main {
   margin-bottom: 16rem;
 }
 
-main > section {
+main > section:not(:first-child) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -47,9 +47,7 @@ main > section {
   gap: 2rem;
 
   height: auto;
-}
-
-section > * {
+  max-width: 50rem;
   margin-inline: auto;
 }
 

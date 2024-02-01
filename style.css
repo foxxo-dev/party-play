@@ -34,7 +34,7 @@ main {
   align-items: center;
   justify-content: flex-start;
 
-  gap: 14rem;
+  gap: 30vh !important;
 
   margin-bottom: 16rem;
 }

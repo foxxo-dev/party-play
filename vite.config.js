@@ -1,5 +1,4 @@
 import topLevelAwait from 'vite-plugin-top-level-await';
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import { resolve } from 'path';
 import pkg from 'fs-extra';
 const { copy } = pkg;
@@ -42,7 +41,6 @@ export default defineConfig({
           resolve(__dirname, 'dist/assets')
         );
       }
-    },
-    cssInjectedByJsPlugin()
+    }
   ]
 });

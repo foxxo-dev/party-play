@@ -64,11 +64,16 @@
           right: 0.5cm;
         }
       }
+      * {
+        text-align: center;
+      }
     </style>
+    <link rel="stylesheet" href="../styles/loader.css" />
   </head>
   <body>
-    <p>We are creating your playlist now...</p>
-    <canvas id="qrcode"></canvas>
+    <div id="loading">
+      <loader><div class="loader10"></div><p>About to AUTH with spotify.</p></loader>
+    </div>
   </body>
   <script src="./main.js" type="module"></script>
 </html>

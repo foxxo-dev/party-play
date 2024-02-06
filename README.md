@@ -11,6 +11,11 @@
 
 # Version History
 
+## Patch - prerelease
+
+- Added dashboard page (not styled)
+- Added loaders.
+
 ## Patch 1.4.6
 
 - Improving service worker

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Party Play for Spotify</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/loader.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="icon" href="../assets/icon.svg" />
+  </head>
+  <body>
+    <h1 id="title">Dashboard | Playlist Name</h1>
+    <main>
+      <div id="scansAmount">
+        <span>Scans:</span>
+        <span id="scans_span"></span>
+      </div>
+      <ol id="playlist"></ol>
+      <canvas id="qrcode"></canvas>
+    </main>
+    <div id="loading">
+      <loader
+        ><div class="loader10"></div>
+        <p>Getting your playlist info...</p></loader
+      >
+    </div>
+  </body>
+  <script src="main.js" type="module"></script>
+</html>

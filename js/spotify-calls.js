@@ -29,7 +29,7 @@ export async function fetchWebApi(endpoint, token, method, body) {
       console.error('Error in fetchWebApi. HTTP status:', res.status);
       if (res.status === 401) {
         console.log('401');
-        window.location.href = '/auth/error.html?error=token-expired&state=401';
+        // window.location.href = '/auth/error.html?error=token-expired&state=401';
         return;
       }
     }
@@ -102,6 +102,14 @@ export async function addScan(token, playlistId) {
     console.error('updatePlaylistDescription error:', error);
     throw error; // Propagate the error
   }
+}
+
+export async function getScans(token, playlistId) {
+  const playlist = await getPlaylist(token, playlistId);
+  const description = playlist.description;
+  console.log('Original Scans: ', description.substring(0, 3));
+  const scanCount = parseInt(description.substring(0, 3));
+  return scanCount;
 }
 
 export async function createPublicPlaylist(accessToken) {

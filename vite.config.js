@@ -23,6 +23,7 @@ export default defineConfig({
           __dirname,
           'terms-and-conditions/spotify/index.html'
         ),
+        dashboard: resolve(__dirname, 'dashboard/index.html'),
         'service-worker': resolve(__dirname, 'js/service-worker.js') // Assuming service-worker.js is located in the 'js' folder
       }
     },

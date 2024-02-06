@@ -22,7 +22,8 @@ export default defineConfig({
         'terms-and-conditions-spotify': resolve(
           __dirname,
           'terms-and-conditions/spotify/index.html'
-        )
+        ),
+        'service-worker': resolve(__dirname, 'js/service-worker.js') // Add this line for service worker
       }
     }
   },

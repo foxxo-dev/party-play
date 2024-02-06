@@ -107,14 +107,16 @@ async function refreshAccessToken(refreshToken) {
 
 // Main function
 const response = parseURLParams(window.location.href);
+var refresh_token;
+var playlistId;
 if (response) {
   console.log(response);
   main(response);
 }
 
 async function main(params) {
-  const refresh_token = params.token[0];
-  const playlistId = params.playlistId[0];
+  refresh_token = params.token[0];
+  playlistId = params.playlistId[0];
   document.querySelector('loader>p').innerHTML = 'Gotten Params';
   let token;
 

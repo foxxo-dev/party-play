@@ -29,7 +29,7 @@ p {
 /* #region WELCOME LANDING PAGE */
 
 main {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -45,7 +45,7 @@ main {
 }
 
 main > section:not(:first-child) {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
@@ -59,7 +59,7 @@ main > section:not(:first-child) {
 .landing {
   height: 100vh;
   height: 100dvh;
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -88,7 +88,7 @@ main > section:not(:first-child) {
   color: #ffffff;
   font-size: 1.5rem;
 
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -122,7 +122,7 @@ main > section:not(:first-child) {
 /* #region HOW IT WORKS */
 
 .section-how-it-works {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -134,7 +134,7 @@ main > section:not(:first-child) {
 }
 
 #section-steps {
-  display: flex!important;
+  display: flex !important;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
@@ -142,7 +142,7 @@ main > section:not(:first-child) {
 }
 
 #section-steps > div {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -171,7 +171,7 @@ main > section:not(:first-child) {
 /* #region ABOUT DEV */
 
 .section-about-dev {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -195,7 +195,7 @@ main > section:not(:first-child) {
 /* #region WELCOME LANDING PAGE FOOTER */
 
 footer {
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -212,7 +212,7 @@ footer {
 }
 
 footer > div.links {
-  display: flex!important;
+  display: flex !important;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -239,7 +239,7 @@ footer a::after {
 }
 
 footer > div.logos {
-  display: flex!important;
+  display: flex !important;
   flex-direction: row;
   align-items: center;
   justify-content: center;

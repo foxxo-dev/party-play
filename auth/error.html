@@ -12,6 +12,9 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+      body {
+        padding: 3rem;
+      }
     </style>
   </head>
   <body>
@@ -34,10 +37,17 @@
     document.getElementById(
       'error_container'
     ).innerText = `Error: ${error}! Code: ${state}`;
-    if (error == 'token-expired') {
+    if (
+      error == 'token-expired' ||
+      error == 'invalid_code' ||
+      error == 'invalid_state'
+    ) {
       document.querySelector('h2 > a').href = '../index.html';
       document.querySelector('h2 > a').innerText =
         'back to the home page and retry.';
+      document.querySelector(
+        'h1'
+      ).innerHTML = `We have encountered a <span class="gradient-txt">problem</span> as you have posed a security threat. <br /> Please <span class="gradient-txt">rescan or re-auth</span> to fix this issue...`;
     }
   </script>
 </html>

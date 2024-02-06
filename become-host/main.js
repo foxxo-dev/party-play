@@ -123,9 +123,6 @@ async function main() {
   var token = '';
   var refresh_token = '';
 
-  console.log('REGISTERING SW');
-  await registerServiceWorker();
-
   if (response || response == []) {
     console.log(response);
     token = response.token[0];
@@ -166,10 +163,14 @@ async function main() {
           <span>Scan QR Code to Play Your Song!</span>
         </div>
         `;
-    document.querySelector('title').innerText = 'Become Host | Party Play';
-    alert(
+    document.querySelector('title').innerText =
+      'NO CLOSE | Become Host | Party Play';
+    console.log(
       'Closing this window is done under your own risk. There is a chance that if you close this window, the playlist will break. We are working on adding a feature, for the playlist to work without this window.'
     );
+
+    console.log('REGISTERING SW');
+    await registerServiceWorker();
 
     // Generate QR code after playlist is created and tracks are added
     QRCode.toCanvas(

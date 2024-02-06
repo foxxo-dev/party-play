@@ -12,7 +12,7 @@
     <div id="loading">
       <loader
         ><div class="loader10"></div>
-        <p>Processing the Spotify Response...</p></loader
+        <p>Gotten user ID and authorization code</p></loader
       >
     </div>
   </body>
@@ -44,6 +44,9 @@
         });
 
         const data = await response.json();
+
+        document.querySelector('loader>p').innerHTML = 'Retrieved token...';
+
         console.log(data);
 
         if (data.access_token && data.refresh_token) {

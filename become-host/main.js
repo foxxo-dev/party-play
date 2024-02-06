@@ -25,14 +25,16 @@ async function main() {
 
   if (response || response == []) {
     console.log(response);
+    document.querySelector('loader>p').innerHTML = 'Authorization successful.';
     token = response.token[0];
     refresh_token = response.refresh_token[0];
     console.log('REFRESH TOKEN HOST: ', refresh_token);
+    document.querySelector('loader>p').innerHTML = 'Creating Playlist...';
     const playlist = await createPublicPlaylist(token);
     await addRecommendedTracks(token, playlist.id);
 
     document.body.innerHTML = `<div id="loading">
-      <loader><div class="loader10"></div><p>Authentication Successful. Redirecting to Dashboard...</p></loader>
+      <loader><div class="loader10"></div><p>Playlist created. Redirecting to Dashboard...</p></loader>
     </div>
         `;
     document.querySelector('title').innerText =
@@ -47,6 +49,8 @@ async function main() {
         refresh_token;
     }, 3000);
   } else {
+    document.querySelector('loader>p').innerHTML =
+      'About to AUTH with spotify...';
     const scopes = [
       'playlist-modify-private',
       'user-top-read',

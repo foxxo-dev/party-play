@@ -3,6 +3,8 @@
 
 # Welcome to Party Play! - foxxo.studio
 
+## Note, I am waiting for spotify to get back, and then we can fully publish the app to the public. For now, the URL is [party-play.foxxo.studio](https://party-play.foxxo.studio)
+
 ## Use the spotify design and legal guidelines, and help develop the app!
 
 **Current Release: v1.5.0**

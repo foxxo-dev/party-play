@@ -1,0 +1,166 @@
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 1.5rem;
+  background: var(--accent, blue);
+  margin: 0;
+  border-radius: 0 0 2rem 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  grid-template-areas:
+    'sa sa pl'
+    'qr dc pl';
+  height: min-content;
+  place-items: center;
+
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+main > * {
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+
+  height: auto;
+  max-width: 50rem;
+  margin-inline: auto;
+
+  background: var(--primary, blue);
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+#scansAmount {
+  grid-area: sa;
+  position: relative;
+  background: var(--secondary, white);
+}
+
+#scansAmount span:not(#scans_span) {
+  align-self: flex-start;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+#scansAmount span#scans_span {
+  font-size: 8rem;
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+}
+
+#playlist {
+  grid-area: pl;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  overflow: hidden;
+}
+
+#playlist h2 {
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+#qrcode {
+  box-sizing: content-box;
+  grid-area: qr;
+  padding: 1.3rem; /* 1.3rem - to be fixed from magic number */
+}
+
+#descriptionEditor {
+  grid-area: dc;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  overflow: hidden;
+  padding: 0.25;
+  background: var(--accent, blue);
+}
+
+#descriptionEditor textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 1rem;
+  background: var(--accent, blue);
+  color: var(--text, white);
+  font-size: 1.5rem;
+  font-weight: 500;
+  resize: none;
+  overflow: auto;
+}
+
+#descriptionEditor textarea::placeholder {
+  color: var(--text, white);
+  opacity: 0.8;
+}
+
+#descriptionEditor textarea:focus {
+  outline: none;
+}
+
+#descriptionEditor button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--text, white);
+  color: var(--primary, blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+@media (max-width: 830px) {
+  body::after {
+    content: 'Mobile Unsupported';
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary, blue);
+    color: var(--text, white);
+    font-size: 3rem;
+    font-weight: 700;
+    z-index: 1000;
+  }
+}

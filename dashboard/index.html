@@ -18,6 +18,17 @@
       </div>
       <ol id="playlist"></ol>
       <canvas id="qrcode"></canvas>
+      <div id="descriptionEditor">
+        <textarea
+          id="description"
+          placeholder="Add a description to your playlist"
+        ></textarea>
+        <button
+          id="saveDescription"
+        >
+          Save
+        </button>
+      </div>
     </main>
     <div id="loading">
       <loader
@@ -26,5 +37,5 @@
       >
     </div>
   </body>
-  <script src="main.js" type="module"></script>
+  <script src="main.js" type="module" defer></script>
 </html>

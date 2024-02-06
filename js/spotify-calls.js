@@ -1,7 +1,14 @@
 var scans = 0;
 
 export async function fetchWebApi(endpoint, token, method, body) {
-  console.log('CALLED!');
+  console.log(
+    'Requesting:',
+    endpoint,
+    'with method:',
+    method,
+    ' and body: ',
+    body
+  );
   const options = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -43,6 +50,8 @@ export async function fetchWebApi(endpoint, token, method, body) {
       return;
     }
 
+    console.log(res);
+
     const data = await res.json();
     console.log('Response data:', data);
 
@@ -69,10 +78,23 @@ async function getPlaylist(token, playlistId) {
 }
 async function getScanCount(token, playlistId) {
   const playlist = await getPlaylist(token, playlistId);
+  console.log(playlist);
   const description = playlist.description;
   console.log('Original Scans: ', description.substring(0, 3));
   const scanCount = parseInt(description.substring(0, 3));
   return scanCount;
+}
+
+export async function changeDescription(token, playlistId, _description) {
+  const _scans = await getScanCount(token, playlistId);
+  _description = `${_scans}  ${_description}`;
+  console.log(_description);
+
+  const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
+    description: _description
+  });
+
+  return res;
 }
 
 export async function addScan(token, playlistId) {

@@ -1,4 +1,4 @@
-import { fetchWebApi } from '../js/spotify-calls.js';
+import { changeDescription, fetchWebApi } from '../js/spotify-calls.js';
 import { parseURLParams } from '../js/params-parser.js';
 import { getScans } from '../js/spotify-calls';
 import QRCode from 'qrcode';
@@ -138,6 +138,16 @@ async function main(params) {
   await checkCurrentlyPlaying(playlistId, token, refresh_token);
   document.querySelector('loader>p').innerHTML =
     'Checking for currently playing track';
+
+  document.getElementById('saveDescription').addEventListener('click', () => {
+    changeDescription(
+      token,
+      playlistId,
+      document.getElementById('description').value
+    ).then(() => {
+      console.log('Updated Description');
+    });
+  });
 }
 
 async function getPlaylistInfo(playlistId, token) {

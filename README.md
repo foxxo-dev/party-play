@@ -5,17 +5,20 @@
 
 ## Use the spotify design and legal guidelines, and help develop the app!
 
-**Current Release: v1.4.6**
+**Current Release: v1.5.0**
 
 **NOTE THE SHARABLE URL CONTAINS VALUABLE DATA SUCH AS REFRESH TOKEN AND USER ID** _Please fix in future updates_
 
 # Version History
 
-## Patch - prerelease
+## Minor Release 1.5.0
 
-- Added dashboard page (not styled)
-- Added loaders.
-- Added More Loaders...
+- Redesigned User Data Flow
+- Remade pages use
+- Added loaders, with descriptions throughout the whole page.
+- Added Dashboard page with information
+- Added new logic to dashboard
+- Designed whole dashboard page
 
 ## Patch 1.4.6
 

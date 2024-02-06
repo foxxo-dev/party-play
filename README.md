@@ -15,6 +15,7 @@
 
 - Added dashboard page (not styled)
 - Added loaders.
+- Added More Loaders...
 
 ## Patch 1.4.6
 

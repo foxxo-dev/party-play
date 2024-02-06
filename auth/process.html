@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Processing Spotify Data...</title>
     <link rel="stylesheet" href="../styles/reset.css" />
-          <link rel="icon" href="../assets/icon.svg" />
+    <link rel="icon" href="../assets/icon.svg" />
+    <link rel="stylesheet" href="../styles/loader.css" />
   </head>
   <body>
-    <h1>If you are on this page, we are processing the Spotify Data!</h1>
-    <h2>Please stand by while we get you back on the right track...</h2>
+    <div id="loading">
+      <loader
+        ><div class="loader10"></div>
+        <p>Processing the Spotify Response...</p></loader
+      >
+    </div>
   </body>
   <script type="module">
     import { parseURLParams } from '../js/params-parser.js';

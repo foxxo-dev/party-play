@@ -109,6 +109,9 @@ export async function getScans(token, playlistId) {
   const description = playlist.description;
   console.log('Original Scans: ', description.substring(0, 3));
   const scanCount = parseInt(description.substring(0, 3));
+  if (isNaN(scanCount)) {
+    return 0;
+  }
   return scanCount;
 }
 

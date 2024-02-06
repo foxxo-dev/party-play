@@ -115,6 +115,7 @@ if (response) {
 async function main(params) {
   const refresh_token = params.token[0];
   const playlistId = params.playlistId[0];
+  document.querySelector('loader>p').innerHTML = 'Gotten Params';
   let token;
 
   console.log(refresh_token, playlistId);
@@ -122,14 +123,21 @@ async function main(params) {
   token = await refreshAccessToken(refresh_token).then(
     (data) => (token = data.access_token)
   );
+  document.querySelector('loader>p').innerHTML = 'Updated Token';
 
   console.log(token);
 
   const playlistInfo = await getPlaylistInfo(playlistId, token);
 
+  document.querySelector('loader>p').innerHTML = 'Fetched Playlist Info';
   console.log(playlistInfo);
 
   updateDOM(playlistInfo);
+  document.querySelector('loader>p').innerHTML = 'Updated DOM';
+
+  await checkCurrentlyPlaying(playlistId, token, refresh_token);
+  document.querySelector('loader>p').innerHTML =
+    'Checking for currently playing track';
 }
 
 async function getPlaylistInfo(playlistId, token) {
@@ -201,5 +209,4 @@ function updateDOM(data) {
   });
 
   document.getElementById('loading').style.transform = 'translateY(-100%)';
-
 }

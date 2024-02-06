@@ -1,12 +1,5 @@
 const CACHE_NAME = 'party-play-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/js/spotify-calls.js',
-  '/js/params-parser.js',
-  '/become-host/main.js',
-  '/become-host/index.html'
-];
+const urlsToCache = ['/become-host/index.html'];
 
 self.addEventListener('install', (event) => {
   // Perform install steps

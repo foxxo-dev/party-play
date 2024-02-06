@@ -1,3 +1,4 @@
+/* Original 4K code */
 h1 {
   font-size: 3rem;
   font-weight: 900;
@@ -162,5 +163,49 @@ main > * {
     font-size: 3rem;
     font-weight: 700;
     z-index: 1000;
+  }
+}
+
+/* Media query for 1080p screens */
+@media (max-width: 2100px) {
+  h1 {
+    font-size: 2.5rem; /* Adjusted font size for smaller screens */
+    padding: 1.5rem; /* Adjusted padding for smaller screens */
+  }
+
+  main {
+    max-width: 60rem;
+    max-height: 35rem;
+  }
+
+  main > * {
+    gap: 1.5rem; /* Adjusted gap for smaller screens */
+    padding: 1.5rem; /* Adjusted padding for smaller screens */
+  }
+
+  #scansAmount span:not(#scans_span) {
+    font-size: 1.8rem; /* Adjusted font size for smaller screens */
+  }
+
+  #scansAmount span#scans_span {
+    font-size: 6.5rem; /* Adjusted font size for smaller screens */
+    left: 1.5rem; /* Adjusted left position for smaller screens */
+  }
+
+  #playlist h2 {
+    font-size: 2.2rem; /* Adjusted font size for smaller screens */
+  }
+
+  #qrcode {
+    padding: 1.8rem; /* Adjusted padding for smaller screens */
+  }
+
+  #descriptionEditor {
+    gap: 1rem; /* Adjusted gap for smaller screens */
+    padding: 1.8rem; /* Adjusted padding for smaller screens */
+  }
+
+  #descriptionEditor textarea {
+    font-size: 1.8rem; /* Adjusted font size for smaller screens */
   }
 }

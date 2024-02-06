@@ -201,7 +201,7 @@ function updateDOM(data) {
   });
 
   qrCode.onclick = () => {
-    open(
+    window.open(
       `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`,
       '_blank'
     );

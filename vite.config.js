@@ -1,8 +1,8 @@
-import topLevelAwait from 'vite-plugin-top-level-await';
 import { resolve } from 'path';
 import pkg from 'fs-extra';
 const { copy } = pkg;
 import { defineConfig } from 'vite';
+import topLevelAwait from 'vite-plugin-top-level-await'; // Import the top-level await plugin
 
 export default defineConfig({
   build: {
@@ -23,9 +23,11 @@ export default defineConfig({
           __dirname,
           'terms-and-conditions/spotify/index.html'
         ),
-        'service-worker': resolve(__dirname, 'js/service-worker.js') // Add this line for service worker
+        'service-worker': resolve(__dirname, 'js/service-worker.js') // Assuming service-worker.js is located in the 'js' folder
       }
-    }
+    },
+    // Output to the root 'dist' directory
+    outDir: resolve(__dirname, 'dist')
   },
   plugins: [
     topLevelAwait({
@@ -37,9 +39,16 @@ export default defineConfig({
     {
       name: 'copy-assets',
       async writeBundle() {
+        // Copy assets to the 'dist' folder
         await copy(
           resolve(__dirname, 'assets'),
           resolve(__dirname, 'dist/assets')
+        );
+
+        // Copy service-worker.js to the 'dist/js' folder
+        await copy(
+          resolve(__dirname, 'js/service-worker.js'),
+          resolve(__dirname, 'dist/js/service-worker.js')
         );
       }
     }

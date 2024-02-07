@@ -169,7 +169,7 @@ main > * {
 /* Media query for 1080p screens */
 @media (max-width: 2100px) {
   h1 {
-    font-size: 2.5rem; /* Adjusted font size for smaller screens */
+    font-size: 2.1rem; /* Adjusted font size for smaller screens */
     padding: 1.5rem; /* Adjusted padding for smaller screens */
   }
 

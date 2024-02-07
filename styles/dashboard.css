@@ -76,14 +76,30 @@ main > * {
   transform: translateY(-50%);
 }
 
-#playlist {
+ol#playlist {
+  box-sizing: border-box;
   grid-area: pl;
   display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-weight: 900;
+  overflow: scroll;
+  padding: 0;
+  margin: 0;
+  max-height: 40rem;
+  padding-block: 2rem;
+}
+
+#playlist li {
+  font-size: 1.1rem;
+  max-width: 15pc;
+  opacity: 0.8;
+  transition: 0.25s;
+  text-wrap: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 1em;
 }
 
 #playlist h2 {

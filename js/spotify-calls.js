@@ -92,7 +92,7 @@ export async function changeDescription(token, playlistId, _description) {
 
   const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
     description: _description,
-    public: true
+    public: false
   });
 
   return res;
@@ -101,7 +101,7 @@ export async function changeDescription(token, playlistId, _description) {
 export async function changeName(token, playlistId, _name) {
   const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
     name: _name,
-    public: true
+    public: false
   });
 
   return res;
@@ -124,7 +124,7 @@ export async function addScan(token, playlistId) {
       'PUT',
       {
         description: description,
-        public: true
+        public: false
       }
     );
     console.log('updatePlaylistDescription response:', updatedPlaylist);

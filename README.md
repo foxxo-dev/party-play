@@ -13,6 +13,10 @@
 
 # Version History
 
+## Patch 1.5.3
+
+- Bug Fixes
+
 ## Patch 1.5.2
 
 - Added 404 page

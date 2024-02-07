@@ -145,6 +145,8 @@ async function main(params) {
   document.querySelector('loader>p').innerHTML =
     'Checking for currently playing track';
 
+  await updatePlaylist(token, playlistId);
+
   document
     .getElementById('saveDescription')
     .addEventListener('click', async () => {
@@ -246,4 +248,48 @@ function updateDOM(data) {
   });
 
   document.getElementById('loading').style.transform = 'translateY(-100%)';
+}
+
+async function checkForNewSongs(token, playlistId) {
+  const playlistInfo = await getPlaylistInfo(playlistId, token);
+  const currentSongs = playlistInfo.songsList.items;
+  let newSongs = await fetchWebApi(
+    `playlists/${playlistId}/tracks`,
+    token,
+    'GET'
+  );
+  newSongs = newSongs.items;
+  console.log(currentSongs, newSongs);
+  if (currentSongs !== newSongs) {
+    return { newSongs: newSongs, isNew: true, currentSongs };
+  }
+  return { newSongs: {}, isNew: false, currentSongs };
+}
+
+async function updatePlaylist(token, playlistId) {
+  setInterval(async () => {
+    let { newSongs, isNew, currentSongs } = await checkForNewSongs(
+      token,
+      playlistId
+    );
+    if (isNew) {
+      newSongs = newSongs.filter((song) => {
+        return !currentSongs.includes(song);
+      });
+      currentSongs = [...currentSongs, ...newSongs];
+      console.log('UPDATRE DSONGS: ', currentSongs);
+      updateDOMPlaylist(currentSongs);
+    }
+  }, 5000);
+}
+
+function updateDOMPlaylist(songs) {
+  const playlist_container = document.getElementById('playlist');
+  playlist_container.innerHTML = '';
+  songs.forEach((item) => {
+    const song = document.createElement('li');
+    song.classList.add('song');
+    song.innerText = item.track.name;
+    playlist_container.appendChild(song);
+  });
 }

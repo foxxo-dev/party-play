@@ -1,4 +1,8 @@
-import { changeDescription, fetchWebApi } from '../js/spotify-calls.js';
+import {
+  changeDescription,
+  fetchWebApi,
+  changeName
+} from '../js/spotify-calls.js';
 import { parseURLParams } from '../js/params-parser.js';
 import { getScans } from '../js/spotify-calls';
 import QRCode from 'qrcode';
@@ -141,15 +145,36 @@ async function main(params) {
   document.querySelector('loader>p').innerHTML =
     'Checking for currently playing track';
 
-  document.getElementById('saveDescription').addEventListener('click', () => {
-    changeDescription(
-      token,
-      playlistId,
-      document.getElementById('description').value
-    ).then(() => {
-      console.log('Updated Description');
+  document
+    .getElementById('saveDescription')
+    .addEventListener('click', async () => {
+      const descriptionValue = document.getElementById('description').value;
+      const nameValue = document.getElementById('playlistName').value;
+
+      const playlistInfo = await getPlaylistInfo(playlistId, token);
+      const currentDescription = playlistInfo.playlist.description;
+      const currentName = playlistInfo.playlist.name;
+
+      if (
+        descriptionValue !== currentDescription &&
+        nameValue !== currentName
+      ) {
+        changeDescription(token, playlistId, descriptionValue).then(() => {
+          console.log('Updated Description');
+          changeName(token, playlistId, nameValue).then(() => {
+            console.log('Updated Name');
+          });
+        });
+      } else if (descriptionValue !== currentDescription) {
+        changeDescription(token, playlistId, descriptionValue).then(() => {
+          console.log('Updated Description');
+        });
+      } else if (nameValue !== currentName) {
+        changeName(token, playlistId, nameValue).then(() => {
+          console.log('Updated Name');
+        });
+      }
     });
-  });
 }
 
 async function getPlaylistInfo(playlistId, token) {

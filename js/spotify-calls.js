@@ -91,7 +91,17 @@ export async function changeDescription(token, playlistId, _description) {
   console.log(_description);
 
   const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
-    description: _description
+    description: _description,
+    public: true
+  });
+
+  return res;
+}
+
+export async function changeName(token, playlistId, _name) {
+  const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
+    name: _name,
+    public: true
   });
 
   return res;
@@ -113,7 +123,6 @@ export async function addScan(token, playlistId) {
       token,
       'PUT',
       {
-        name: 'Current Party Playlist',
         description: description,
         public: true
       }

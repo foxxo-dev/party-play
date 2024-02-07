@@ -13,6 +13,12 @@
 
 # Version History
 
+## Patch 1.5.2
+
+- Added 404 page
+- Bug Fixes
+- Style Fixes
+
 ## Patch 1.5.1
 
 - Fixed Styling Bugs

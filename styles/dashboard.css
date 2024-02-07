@@ -98,6 +98,12 @@ main > * {
   box-sizing: content-box;
   grid-area: qr;
   padding: 1.3rem; /* 1.3rem - to be fixed from magic number */
+  transition: 200ms linear box-shadow;
+}
+
+#qrcode:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1rem 0.5rem var(--accent, blue);
 }
 
 #descriptionEditor {
@@ -114,7 +120,21 @@ main > * {
   padding: 0.25;
   background: var(--accent, blue);
 }
-
+#descriptionEditor input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--text, white);
+  color: var(--accent, blue);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: 0.25s;
+}
+#descriptionEditor input:focus {
+  outline: none;
+}
 #descriptionEditor textarea {
   width: 100%;
   height: 100%;
@@ -138,12 +158,13 @@ main > * {
 }
 
 #descriptionEditor button {
+  box-sizing: border-box;
   width: 100%;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
   background: var(--text, white);
-  color: var(--primary, blue);
+  color: var(--accent, blue);
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
@@ -169,7 +190,7 @@ main > * {
 /* Media query for 1080p screens */
 @media (max-width: 2100px) {
   h1 {
-    font-size: 2.1rem; /* Adjusted font size for smaller screens */
+    font-size: 2.1rem !important; /* Adjusted font size for smaller screens */
     padding: 1.5rem; /* Adjusted padding for smaller screens */
   }
 

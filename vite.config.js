@@ -24,7 +24,8 @@ export default defineConfig({
           'terms-and-conditions/spotify/index.html'
         ),
         dashboard: resolve(__dirname, 'dashboard/index.html'),
-        'service-worker': resolve(__dirname, 'js/service-worker.js') // Assuming service-worker.js is located in the 'js' folder
+        'service-worker': resolve(__dirname, 'js/service-worker.js'), // Assuming service-worker.js is located in the 'js' folder,
+        404: resolve(__dirname, 'error/404.html')
       }
     },
     // Output to the root 'dist' directory

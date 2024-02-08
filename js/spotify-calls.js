@@ -1,4 +1,4 @@
-var scans = 0;
+let scans = 0;
 
 export async function fetchWebApi(endpoint, token, method, body) {
   console.log(
@@ -9,6 +9,10 @@ export async function fetchWebApi(endpoint, token, method, body) {
     ' and body: ',
     body
   );
+
+  // Increment scans
+  scans++;
+
   const options = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -25,42 +29,19 @@ export async function fetchWebApi(endpoint, token, method, body) {
 
   try {
     const res = await fetch(`https://api.spotify.com/v1/${endpoint}`, options);
-    // const responseText = await res.text(); // Log the raw response text
-    // console.log('Raw response:', responseText);
-    // if (!responseText) {
-    //   console.error('Empty response from the API');
-    //   return; // Or handle accordingly
-    // }
 
     if (!res.ok) {
       console.error('Error in fetchWebApi. HTTP status:', res.status);
-      if (res.status === 401) {
-        console.log('401');
-        // window.location.href = '/auth/error.html?error=token-expired&state=401';
-        return;
-      }
     }
 
-    if (res.status === 401) {
-      window.location.href = '/auth/error.html?';
-      return;
+    const responseBody = await res.text();
+
+    if (!responseBody) {
+      console.error('Empty response from the API');
     }
 
-    if (res.status === 204) {
-      return;
-    }
-
-    console.log(res);
-
-    const data = await res.json();
+    const data = JSON.parse(responseBody);
     console.log('Response data:', data);
-
-    if (data.error) {
-      console.error('DATA ERROR');
-      throw new Error(data.error.message);
-    }
-
-    console.log('RETURNING DATA: ', data);
 
     return data;
   } catch (error) {
@@ -76,6 +57,7 @@ export async function getMe(token) {
 async function getPlaylist(token, playlistId) {
   return await fetchWebApi(`playlists/${playlistId}`, token, 'GET');
 }
+
 async function getScanCount(token, playlistId) {
   const playlist = await getPlaylist(token, playlistId);
   console.log(playlist);
@@ -86,25 +68,35 @@ async function getScanCount(token, playlistId) {
 }
 
 export async function changeDescription(token, playlistId, _description) {
-  const _scans = await getScanCount(token, playlistId);
-  _description = `${_scans}  ${_description}`;
-  console.log(_description);
+  try {
+    const _scans = await getScanCount(token, playlistId);
+    _description = `${_scans}  ${_description}`;
+    console.log(_description);
 
-  const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
-    description: _description,
-    public: false
-  });
+    const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
+      description: _description.toUpperCase(),
+      public: false
+    });
 
-  return res;
+    return res; // Return the response without parsing JSON
+  } catch (error) {
+    console.error('Error in changeDescription:', error);
+    throw error;
+  }
 }
 
 export async function changeName(token, playlistId, _name) {
-  const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
-    name: _name,
-    public: false
-  });
+  try {
+    const res = await fetchWebApi(`playlists/${playlistId}`, token, 'PUT', {
+      name: _name.toUpperCase(),
+      public: false
+    });
 
-  return res;
+    return res; // Return the response without parsing JSON
+  } catch (error) {
+    console.error('Error in changeDescription:', error);
+    throw error;
+  }
 }
 
 export async function addScan(token, playlistId) {
@@ -255,8 +247,7 @@ export async function refreshToken(refreshToken) {
       'https://accounts.spotify.com/api/token',
       options
     );
-    const data = await response.json();
-    return data;
+    return response; // Return the response directly
   } catch (error) {
     console.error('Error refreshing token:', error);
     throw error;

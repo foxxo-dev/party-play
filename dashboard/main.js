@@ -157,33 +157,27 @@ async function main(params) {
   document
     .getElementById('saveDescription')
     .addEventListener('click', async () => {
-      const descriptionValue = document.getElementById('description').value;
-      const nameValue = document.getElementById('playlistName').value;
-
-      const playlistInfo = await getPlaylistInfo(playlistId, token);
-      const currentDescription = playlistInfo.playlist.description;
-      const currentName = playlistInfo.playlist.name;
-
-      if (
-        descriptionValue !== currentDescription &&
-        nameValue !== currentName
-      ) {
-        changeDescription(token, playlistId, descriptionValue).then(() => {
-          console.log('Updated Description');
-          changeName(token, playlistId, nameValue).then(() => {
-            console.log('Updated Name');
-          });
-        });
-      } else if (descriptionValue !== currentDescription) {
-        changeDescription(token, playlistId, descriptionValue).then(() => {
-          console.log('Updated Description');
-        });
-      } else if (nameValue !== currentName) {
-        changeName(token, playlistId, nameValue).then(() => {
-          console.log('Updated Name');
-        });
-      }
+      await updatePlaylistInfo(playlistId, token);
     });
+}
+
+async function updatePlaylistInfo(playlistId, token) {
+  let descriptionValue = document.getElementById('description').value;
+  let nameValue = document.getElementById('playlistName').value;
+
+  descriptionValue = descriptionValue.trim();
+  nameValue = nameValue.trim();
+  if (descriptionValue !== '') {
+    await changeDescription(token, playlistId, descriptionValue);
+    console.log('Updated Description');
+  }
+  if (nameValue !== '') {
+    await changeName(token, playlistId, nameValue);
+    console.log('Updated Name');
+  }
+  console.log('Changes saved.');
+  nameValue = '';
+  descriptionValue = '';
 }
 
 async function getPlaylistInfo(playlistId, token) {

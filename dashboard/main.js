@@ -71,6 +71,13 @@ async function checkCurrentlyPlaying(playlistId, token, refreshToken) {
 
         // Remove the played track from the playlist
         await removeTrackFromPlaylist(token, playlistId, playedTrackId);
+        let playlist_songs = await fetchWebApi(
+          'playlists/' + playlistId,
+          token,
+          'GET'
+        );
+        playlist_songs = playlist_songs.tracks.items;
+        updateDOMPlaylist(playlist_songs);
       } else {
         console.log('No track currently playing.');
       }
@@ -280,7 +287,7 @@ async function updatePlaylist(token, playlistId) {
       console.log('UPDATRE DSONGS: ', currentSongs);
       updateDOMPlaylist(currentSongs);
     }
-  }, 5000);
+  }, 30000);
 }
 
 function updateDOMPlaylist(songs) {

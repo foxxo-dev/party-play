@@ -22,18 +22,21 @@ body {
 }
 
 main {
+  --cell: clamp(15rem, 20vw, 20rem);
+
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(1, var(--cell)) 1fr 1fr;
+  grid-template-rows: repeat(2, var(--cell));
   gap: 1rem;
   grid-template-areas:
-    'sa sa pl'
-    'qr dc pl';
+    'qr dc dc'
+    'sa pl pl';
   height: min-content;
   place-items: center;
 
-  max-width: 60rem;
+  /* max-width: 60rem; */
   margin-inline: auto;
+  /* max-height: 40rem; */
 }
 
 main > * {
@@ -59,10 +62,15 @@ main > * {
   grid-area: sa;
   position: relative;
   background: var(--secondary, white);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0rem;
 }
 
 #scansAmount span:not(#scans_span) {
-  align-self: flex-start;
   font-size: 1.5rem;
   opacity: 0.8;
 }
@@ -70,44 +78,50 @@ main > * {
 #scansAmount span#scans_span {
   font-size: 8rem;
   font-weight: 900;
-  position: absolute;
-  top: 50%;
-  left: 2rem;
-  transform: translateY(-50%);
+}
+
+#playlist_cont {
+  grid-area: pl;
+
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#songs_count {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  margin: 0rem;
 }
 
 ol#playlist {
-  box-sizing: border-box;
-  grid-area: pl;
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  overflow: scroll;
-  padding: 0;
-  margin: 0;
-  max-height: 40rem;
-  padding-block: 2rem;
+  margin: 0rem;
+  position: relative;
+  width: 100%;
+  height: 1rem;
 }
 
 #playlist li {
-  font-size: 1.1rem;
-  max-width: 15pc;
-  opacity: 0.8;
-  transition: 0.25s;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-height: 1em;
+  position: absolute;
+  animation: slide 1s ease infinite;
+  animation-delay: calc((var(--size, 0) * 1s - (var(--n, 0) * 1s)) * -1);
 }
 
-#playlist h2 {
-  font-size: 2rem;
-  text-align: center;
-  width: 100%;
-  font-weight: 500;
-  opacity: 0.8;
+@keyframes slide {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
 }
 
 #qrcode {
@@ -156,16 +170,18 @@ ol#playlist {
   height: 100%;
   border: none;
   border-radius: 1rem;
-  background: var(--accent, blue);
-  color: var(--text, white);
-  font-size: 1.5rem;
+  color: var(--accent, blue);
+  font-size: 1.25rem;
   font-weight: 500;
   resize: none;
   overflow: auto;
+  background: var(--text, white);
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
 }
 
 #descriptionEditor textarea::placeholder {
-  color: var(--text, white);
+  color: var(--accent, white);
   opacity: 0.8;
 }
 

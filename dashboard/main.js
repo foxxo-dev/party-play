@@ -6,7 +6,8 @@ import {
 import { parseURLParams } from '../js/params-parser.js';
 import { getScans } from '../js/spotify-calls';
 import QRCode from 'qrcode';
-
+import { createAttr } from '../js/attribution.js';
+createAttr(document.querySelector('body'));
 // Other stuff
 
 // Function to remove a track from the playlist using Spotify Web API
@@ -181,7 +182,7 @@ async function main(params) {
 
 async function getPlaylistInfo(playlistId, token) {
   const scans = await getScans(token, playlistId);
-  const isCurrent = false;
+  let isCurrent = false;
   scans > 0 && (isCurrent = true);
   console.log(playlistId, token);
   const playlist = await fetchWebApi(`playlists/${playlistId}`, token, 'GET');
@@ -221,6 +222,7 @@ function updateDOM(data) {
     isCurrent ? 'Current' : 'Not Current'
   } Playlist`;
   scans_span.innerText = scans;
+  document.getElementById('songs_count').innerText = `${amountOfSongs} songs`;
 
   //   Create the QR Code
   QRCode.toCanvas(qrCode, window.location.href, function (error) {
@@ -237,15 +239,19 @@ function updateDOM(data) {
   };
 
   //   Add the songs to the playlist container
-  const songsAmountTitle = document.createElement('h2');
-  songsAmountTitle.innerText = `Songs (${amountOfSongs})`;
-  playlist_container.appendChild(songsAmountTitle);
-  songsList.items.forEach((item) => {
-    const song = document.createElement('li');
-    song.classList.add('song');
-    song.innerText = item.track.name;
-    playlist_container.appendChild(song);
-  });
+
+  {
+    var i = 1;
+    var size = songsList.items.length;
+    songsList.items.forEach((item) => {
+      const song = document.createElement('li');
+      song.style.setProperty('--n', i++);
+      song.style.setProperty('--size', size);
+      song.classList.add('song');
+      song.innerText = item.track.name;
+      playlist_container.appendChild(song);
+    });
+  }
 
   document.getElementById('loading').style.transform = 'translateY(-100%)';
 }
@@ -286,8 +292,12 @@ async function updatePlaylist(token, playlistId) {
 function updateDOMPlaylist(songs) {
   const playlist_container = document.getElementById('playlist');
   playlist_container.innerHTML = '';
+  var i = 1;
+  var size = songs.length;
   songs.forEach((item) => {
     const song = document.createElement('li');
+    song.style.setProperty('--n', i++);
+    song.style.setProperty('--size', size);
     song.classList.add('song');
     song.innerText = item.track.name;
     playlist_container.appendChild(song);

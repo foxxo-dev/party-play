@@ -72,6 +72,13 @@ async function checkCurrentlyPlaying(playlistId, token, refreshToken) {
 
         // Remove the played track from the playlist
         await removeTrackFromPlaylist(token, playlistId, playedTrackId);
+        let playlist_songs = await fetchWebApi(
+          'playlists/' + playlistId,
+          token,
+          'GET'
+        );
+        playlist_songs = playlist_songs.tracks.items;
+        updateDOMPlaylist(playlist_songs);
       } else {
         console.log('No track currently playing.');
       }
@@ -151,33 +158,27 @@ async function main(params) {
   document
     .getElementById('saveDescription')
     .addEventListener('click', async () => {
-      const descriptionValue = document.getElementById('description').value;
-      const nameValue = document.getElementById('playlistName').value;
-
-      const playlistInfo = await getPlaylistInfo(playlistId, token);
-      const currentDescription = playlistInfo.playlist.description;
-      const currentName = playlistInfo.playlist.name;
-
-      if (
-        descriptionValue !== currentDescription &&
-        nameValue !== currentName
-      ) {
-        changeDescription(token, playlistId, descriptionValue).then(() => {
-          console.log('Updated Description');
-          changeName(token, playlistId, nameValue).then(() => {
-            console.log('Updated Name');
-          });
-        });
-      } else if (descriptionValue !== currentDescription) {
-        changeDescription(token, playlistId, descriptionValue).then(() => {
-          console.log('Updated Description');
-        });
-      } else if (nameValue !== currentName) {
-        changeName(token, playlistId, nameValue).then(() => {
-          console.log('Updated Name');
-        });
-      }
+      await updatePlaylistInfo(playlistId, token);
     });
+}
+
+async function updatePlaylistInfo(playlistId, token) {
+  let descriptionValue = document.getElementById('description').value;
+  let nameValue = document.getElementById('playlistName').value;
+
+  descriptionValue = descriptionValue.trim();
+  nameValue = nameValue.trim();
+  if (descriptionValue !== '') {
+    await changeDescription(token, playlistId, descriptionValue);
+    console.log('Updated Description');
+  }
+  if (nameValue !== '') {
+    await changeName(token, playlistId, nameValue);
+    console.log('Updated Name');
+  }
+  console.log('Changes saved.');
+  nameValue = '';
+  descriptionValue = '';
 }
 
 async function getPlaylistInfo(playlistId, token) {
@@ -286,7 +287,7 @@ async function updatePlaylist(token, playlistId) {
       console.log('UPDATRE DSONGS: ', currentSongs);
       updateDOMPlaylist(currentSongs);
     }
-  }, 5000);
+  }, 30000);
 }
 
 function updateDOMPlaylist(songs) {

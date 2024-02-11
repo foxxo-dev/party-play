@@ -105,7 +105,7 @@ ol#playlist {
 ol#playlist::after {
   content: 'Work in Progress...';
   position: absolute;
-  width: 100%;
+  width: auto;
   height: 2rem;
   font-size: 1.5rem;
   padding: 0.5rem;

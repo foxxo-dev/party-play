@@ -1,3 +1,5 @@
+@import './print.css';
+
 /* Original 4K code */
 h1 {
   font-size: 3rem;
@@ -218,7 +220,7 @@ ol#playlist::after {
   transition: 0.25s;
 }
 
-@media (max-width: 830px) {
+@media screen and (max-width: 830px) and (pointer: coarse) {
   body::after {
     content: 'Mobile Unsupported';
     position: fixed;

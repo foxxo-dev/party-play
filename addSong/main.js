@@ -19,7 +19,11 @@ const search_frm = document.getElementById('search');
 
 // console.log('--------------------------------------');
 // console.log('REFRESH TOKEN HOST: ', token);
-token = await refreshToken(token).then((res) => res.access_token);
+var token_temp = await refreshToken(token);
+console.log('Temp Token OBJ', token_temp);
+
+token = token_temp.access_token;
+
 addScan(token, playlistId);
 
 console.log(token);

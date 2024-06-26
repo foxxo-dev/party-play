@@ -31,6 +31,9 @@
 
     console.log(parseURLParams(window.location.href));
     const { code, token, refresh_token } = parseURLParams(window.location.href);
+    if(!code || !token || !refresh_token) {
+      window.location.href = './error.html'
+    }
 
     
     setInterval(makeAlert, 1000);

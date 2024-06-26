@@ -21,6 +21,9 @@
 
     async function getToken() {
       const { code, state } = parseURLParams(window.location.href);
+      if (!code || !state) {
+        window.location.href = './error.html';
+      }
 
       // Check state if needed
       // if (state[0] !== '123' && state[0] !== 123) {

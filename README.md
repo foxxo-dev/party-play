@@ -13,6 +13,14 @@
 
 # Version History
 
+## Minor Release 1.6.0
+
+- Bug Fixes
+- Added Print Functionality
+- Style changes
+- Loading times minimized
+- Improved Loaders
+
 ## Patch 1.5.4
 
 - Bug Fixes

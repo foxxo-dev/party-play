@@ -28,6 +28,7 @@ export default defineConfig({
           'terms-and-conditions/index.html'
         ),
         dashboard: resolve(__dirname, 'dashboard/index.html'),
+        print: resolve(__dirname, 'PRINT/index.html'),
         'service-worker': resolve(__dirname, 'js/service-worker.js'), // Assuming service-worker.js is located in the 'js' folder,
         404: resolve(__dirname, 'error/404.html')
       }

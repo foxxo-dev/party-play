@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party Play Print</title>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        overflow: hidden;
+      }
+      img {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(5);
+        border: 5px solid #fcd739;
+        border-radius: 0.25rem;
+      }
+      #pageCoverer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: black;
+        width: 100vw;
+        height: 100vh;
+        display: block;
+        z-index: 100000;
+      }
+      @media print {
+        #pageCoverer {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="../assets/print_template.png"
+      alt="IF YOU SEE THIS SOMETHING IS WRONG"
+    />
+    <canvas id="qrCode"></canvas>
+    <div id="pageCoverer"></div>
+  </body>
+  <script type="module">
+    import { parseURLParams } from '../js/params-parser.js';
+    import QRCode from 'qrcode';
+    const { qrData } = parseURLParams(window.location.href);
+    const qrCode = document.getElementById('qrCode');
+
+    QRCode.toCanvas(qrCode, atob(qrData), function (error) {
+      if (error) {
+        console.error(error);
+      }
+    });
+
+    window.addEventListener('afterprint', function () {
+      window.close();
+    });
+
+    window.print();
+  </script>
+</html>

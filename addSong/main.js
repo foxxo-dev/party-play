@@ -45,10 +45,11 @@ async function createPlaylist() {
     console.log(track);
     playlist.innerHTML += ` <div class="card">
         <img src="${image}" alt="Cover" />
+        <img src="../assets/Spotify_Icon_RGB_White.png" alt="Spotify Icon" class="spotify-icon-card" />
         <div>
           <span class="title">${name}</span>
           <span class="artist">${authors}</span>
-          <a class="spotify-attribution" href="${spotifyUrl}">Play on Spotify</a>
+          <a class="spotify-attribution" href="${spotifyUrl}"> Play on Spotify</a>
         </div>
       </div>`;
   });

@@ -12,6 +12,16 @@ body {
   padding: 0.5rem;
 }
 
+.spotify-icon-card {
+  --icon-size: 21px;
+  max-height: var(--icon-size);
+  aspect-ratio: 1;
+  object-fit: cover;
+  position: absolute;
+  top: calc(var(--icon-size) / 2);
+  left: calc(var(--icon-size) / 2);
+}
+
 #search {
   all: unset;
   background: var(--primary);
@@ -78,6 +88,7 @@ body {
 .card > img {
   width: 4rem;
   height: 4rem;
+  margin-left: 21px;
 }
 .spotify-attribution {
   position: absolute;

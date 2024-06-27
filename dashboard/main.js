@@ -226,11 +226,15 @@ function updateDOM(data) {
   document.getElementById('songs_count').innerText = `${amountOfSongs} songs`;
 
   //   Create the QR Code
-  QRCode.toCanvas(qrCode, window.location.href, function (error) {
-    if (error) {
-      console.error(error);
+  QRCode.toCanvas(
+    qrCode,
+    `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`,
+    function (error) {
+      if (error) {
+        console.error(error);
+      }
     }
-  });
+  );
 
   qrCode.onclick = () => {
     window.open(
@@ -304,3 +308,47 @@ function updateDOMPlaylist(songs) {
     playlist_container.appendChild(song);
   });
 }
+
+function printQRTemplate(url) {
+  if (typeof url !== 'string' || url.trim() === '') {
+    console.error('Invalid URL');
+    return;
+  }
+
+  const _window = window.open(url);
+
+  if (_window) {
+    console.log('Opened URL:', url);
+  } else {
+    console.error('Popup blocked or failed to open');
+    alert('Please Unblock popups!');
+  }
+}
+
+// printQRTemplate(
+//   `https://party-play.foxxo.studio/PRINT/index.html?qrData=${btoa(
+//     `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`
+//   )}`
+// );
+
+window.print = (e) => e.preventDefault();
+// Function to handle key press events
+function handleKeyPress(event) {
+  // Check if Ctrl key and 'p' key are pressed
+  if (event.ctrlKey && (event.key === 'p' || event.keyCode === 80)) {
+    event.preventDefault(); // Prevent the default print behavior
+    // Optionally, you can add your own custom logic here
+    const encodedURL = btoa(
+      `https://party-play.foxxo.studio/addSong/index.html?playlistId=${playlist.id}&token=${refresh_token}`
+    );
+
+    // Construct the URL for the print template
+    const printURL = `http://localhost:5173/PRINT/index.html?qrData=${encodedURL}`;
+
+    // Call your custom print function
+    printQRTemplate(printURL);
+  }
+}
+
+// Attach key press event listener to the document
+document.addEventListener('keydown', handleKeyPress);

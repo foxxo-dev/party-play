@@ -123,7 +123,6 @@ export async function addScan(token, playlistId) {
     return updatedPlaylist;
   } catch (error) {
     console.error('updatePlaylistDescription error:', error);
-    throw error; // Propagate the error
   }
 }
 

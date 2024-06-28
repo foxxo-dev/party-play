@@ -343,7 +343,7 @@ function handleKeyPress(event) {
     );
 
     // Construct the URL for the print template
-    const printURL = `http://localhost:5173/PRINT/index.html?qrData=${encodedURL}`;
+    const printURL = `https://party-play.foxxo.studio/PRINT/index.html?qrData=${encodedURL}`;
 
     // Call your custom print function
     printQRTemplate(printURL);

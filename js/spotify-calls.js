@@ -174,8 +174,8 @@ export async function getPlaylistTracks(playlistId, token) {
     token,
     'GET'
   );
-  console.log('DATA: ', response.data);
-  return response;
+  console.log('DATA: ', response.items);
+  return response.items;
 }
 
 export async function getTopTracks(token) {
@@ -233,7 +233,7 @@ export async function refreshToken(refreshToken) {
   const body = new URLSearchParams({
     grant_type: 'refresh_token',
     refresh_token: refreshToken
-  })
+  });
 
   const clientId = '45b1711a56714857811215f27b15ffc7';
   const clientSecret = 'd009262d84014f33a5fe5dddf731248f';
@@ -248,11 +248,8 @@ export async function refreshToken(refreshToken) {
   };
 
   try {
-    const data = await fetch(
-      'https://accounts.spotify.com/api/token',
-      options
-    );
-    let response = data.json()
+    const data = await fetch('https://accounts.spotify.com/api/token', options);
+    let response = data.json();
     return response; // Return the response directly
   } catch (error) {
     console.error('Error refreshing token:', error);

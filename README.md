@@ -13,6 +13,11 @@
 
 # Version History
 
+## Patch 1.6.2
+
+- Bug Fixes
+- Hopefully fixed rendering on mobile devices of addSong page
+
 ## Patch 1.6.1
 
 - Bug Fixes

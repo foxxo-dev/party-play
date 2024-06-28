@@ -32,7 +32,6 @@ async function createPlaylist() {
   const playlist = document.getElementById('playlist');
 
   let tracks = await getPlaylistTracks(playlistId, token);
-  tracks = tracks.items;
 
   playlist.innerHTML = '<span class="play-title>Next Song: </span>';
   tracks.forEach((trackObj) => {
@@ -42,17 +41,55 @@ async function createPlaylist() {
     const authors = track.artists.map((artist) => artist.name).join(', ');
     const spotifyUrl = track.external_urls.spotify;
     const image = track.album.images[0].url;
-    console.log(track);
-    playlist.innerHTML += ` <div class="card">
-        <img src="${image}" alt="Cover" />
-        <img src="../assets/Spotify_Icon_RGB_White.png" alt="Spotify Icon" class="spotify-icon-card" />
-        <div>
-          <span class="title">${name}</span>
-          <span class="artist">${authors}</span>
-          <a class="spotify-attribution" href="${spotifyUrl}"> Play on Spotify</a>
-        </div>
-      </div>`;
+
+    // Create card div
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    // Create cover image
+    const coverImage = document.createElement('img');
+    coverImage.src = image;
+    coverImage.alt = 'Cover';
+
+    // Create Spotify icon image
+    const spotifyIcon = document.createElement('img');
+    spotifyIcon.src = '../assets/Spotify_Icon_RGB_White.png';
+    spotifyIcon.alt = 'Spotify Icon';
+    spotifyIcon.className = 'spotify-icon-card';
+
+    // Create div for text content
+    const textContent = document.createElement('div');
+
+    // Create title span
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'title';
+    titleSpan.textContent = name;
+
+    // Create artist span
+    const artistSpan = document.createElement('span');
+    artistSpan.className = 'artist';
+    artistSpan.textContent = authors;
+
+    // Create Spotify link
+    const spotifyLink = document.createElement('a');
+    spotifyLink.className = 'spotify-attribution';
+    spotifyLink.href = spotifyUrl;
+    spotifyLink.textContent = 'Play on Spotify';
+
+    // Append elements to text content div
+    textContent.appendChild(titleSpan);
+    textContent.appendChild(artistSpan);
+    textContent.appendChild(spotifyLink);
+
+    // Append elements to card div
+    card.appendChild(coverImage);
+    card.appendChild(spotifyIcon);
+    card.appendChild(textContent);
+
+    // Append card to playlist
+    playlist.appendChild(card);
   });
+
 }
 
 createPlaylist();

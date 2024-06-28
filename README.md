@@ -17,6 +17,7 @@
 
 - Bug Fixes
 - Hopefully fixed rendering on mobile devices of addSong page
+- added default bg and darkened image
 
 ## Patch 1.6.1
 

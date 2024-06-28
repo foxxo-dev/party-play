@@ -13,6 +13,11 @@
 
 # Version History
 
+## Patch 1.6.1
+
+- Bug Fixes
+- Added Spotify Icon to all cards
+
 ## Minor Release 1.6.0
 
 - Bug Fixes

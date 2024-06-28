@@ -1,7 +1,8 @@
 import {
   changeDescription,
   fetchWebApi,
-  changeName
+  changeName,
+  addRecommendedTracks
 } from '../js/spotify-calls.js';
 import { parseURLParams } from '../js/params-parser.js';
 import { getScans } from '../js/spotify-calls';
@@ -352,3 +353,13 @@ function handleKeyPress(event) {
 
 // Attach key press event listener to the document
 document.addEventListener('keydown', handleKeyPress);
+
+document
+  .getElementById('add_recommended_songs')
+  .addEventListener('click', async () => {
+    const _token = await refreshAccessToken(refresh_token);
+    const token = _token.access_token;
+    console.clear();
+    console.log(token);
+    await addRecommendedTracks(token, playlistId);
+  });

@@ -85,10 +85,9 @@ body {
   max-width: 16.5pc;
   overflow: hidden;
 }
-.card > img {
-  width: 4rem;
+.card > img:not(.spotify-icon-card) {
   height: 4rem;
-  margin-left: 21px;
+  margin-left: 24px;
 }
 .spotify-attribution {
   position: absolute;
@@ -132,9 +131,31 @@ body {
 .result-card {
   height: 4rem;
   width: 100%;
+  background-position: center;
+  background-size: contain;
+  background: transparent !important;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
-.result-card > img {
+.result-card-content {
+  background: transparent !important;
+}
+
+.result-card .card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(5vw);
+  background-position: center;
+  background-size: contain;
+}
+
+.result-card > img:not(.spotify-icon-card) {
   width: 3rem;
   height: 3rem;
 }

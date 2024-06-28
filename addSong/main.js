@@ -98,17 +98,20 @@ search_frm.addEventListener('keydown', async (e) => {
     console.log(trackObj);
 
     const card = document.createElement('div');
-    card.classList.add('card', 'result-card');
+
+    card.classList.add('result-card');
     card.addEventListener('click', async () => {
       await addTrackToPlaylistClick(uri);
       document.getElementById('playlist').innerHTML = 'Loading...';
       await createPlaylist();
     });
 
+    const content = document.createElement('div');
+
     const img = document.createElement('img');
     img.src = image;
     img.alt = 'Cover';
-    card.appendChild(img);
+    content.appendChild(img);
 
     const div = document.createElement('div');
 
@@ -128,7 +131,18 @@ search_frm.addEventListener('keydown', async (e) => {
     spotifyLink.textContent = 'Play on Spotify';
     div.appendChild(spotifyLink);
 
-    card.appendChild(div);
+    content.appendChild(div);
+    content.className = 'result-card-content card';
+
+    const bg = document.createElement('div');
+    bg.style.backgroundImage = `url(${image})`;
+    bg.className = 'card-bg'
+
+    card.appendChild(bg);
+
+    card.appendChild(content);
+    card.innerHTML +=
+      '<img src="../assets/Spotify_Icon_RGB_White.png" alt="Spotify Icon" class="spotify-icon-card" />';
     results.appendChild(card);
   });
 

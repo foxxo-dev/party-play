@@ -57,7 +57,7 @@ async function main() {
       'user-read-playback-state',
       'playlist-modify-public'
     ];
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=https://party-play.foxxo.studio/auth/process.html&scope=${scopes.join(
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=45b1711a56714857811215f27b15ffc7&response_type=code&redirect_uri=https://party-play.foxxo.app/auth/process.html&scope=${scopes.join(
       '%20'
     )}&state=123`;
   }
